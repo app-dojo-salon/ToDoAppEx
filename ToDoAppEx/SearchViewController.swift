@@ -16,8 +16,10 @@ class SearchViewController: UIViewController, UINavigationBarDelegate, UITabBarD
         shareVC.modalPresentationStyle = .fullScreen
         self.present(shareVC, animated: true, completion: nil)
     }
+
     @IBAction func searchButton(_ sender: Any) {
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

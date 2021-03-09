@@ -13,11 +13,13 @@ class ShareViewController: UIViewController, UINavigationBarDelegate, UITabBarDe
     @IBOutlet weak var tabbar: UITabBar!
     @IBAction func shareButton(_ sender: Any) {
     }
+
     @IBAction func searchButton(_ sender: Any) {
         let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         searchVC.modalPresentationStyle = .fullScreen
         self.present(searchVC, animated: true, completion: nil)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

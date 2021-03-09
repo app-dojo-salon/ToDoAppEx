@@ -17,11 +17,13 @@ class EditViewController: UIViewController, UINavigationBarDelegate, UITabBarDel
         shareVC.modalPresentationStyle = .fullScreen
         self.present(shareVC, animated: true, completion: nil)
     }
+
     @IBAction func searchButton(_ sender: Any) {
         let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         searchVC.modalPresentationStyle = .fullScreen
         self.present(searchVC, animated: true, completion: nil)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +31,7 @@ class EditViewController: UIViewController, UINavigationBarDelegate, UITabBarDel
         tabbar.delegate = self
     }
 
-
+	
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }

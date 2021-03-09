@@ -15,6 +15,10 @@
 		F48F3AE225F3D8EA001E5342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48F3AE025F3D8EA001E5342 /* LaunchScreen.storyboard */; };
 		F48F3AED25F3D8EA001E5342 /* ToDoAppExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AEC25F3D8EA001E5342 /* ToDoAppExTests.swift */; };
 		F48F3AF825F3D8EA001E5342 /* ToDoAppExUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AF725F3D8EA001E5342 /* ToDoAppExUITests.swift */; };
+		F48F3B0925F447A3001E5342 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B0825F447A3001E5342 /* EditViewController.swift */; };
+		F48F3B0E25F447B6001E5342 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B0D25F447B6001E5342 /* SettingViewController.swift */; };
+		F48F3B1325F447C8001E5342 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B1225F447C8001E5342 /* ShareViewController.swift */; };
+		F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B1725F447D8001E5342 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		F48F3AF325F3D8EA001E5342 /* ToDoAppExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48F3AF725F3D8EA001E5342 /* ToDoAppExUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppExUITests.swift; sourceTree = "<group>"; };
 		F48F3AF925F3D8EA001E5342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F48F3B0825F447A3001E5342 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		F48F3B0D25F447B6001E5342 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		F48F3B1225F447C8001E5342 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F48F3B1725F447D8001E5342 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,10 @@
 				F48F3ADE25F3D8EA001E5342 /* Assets.xcassets */,
 				F48F3AE025F3D8EA001E5342 /* LaunchScreen.storyboard */,
 				F48F3AE325F3D8EA001E5342 /* Info.plist */,
+				F48F3B0825F447A3001E5342 /* EditViewController.swift */,
+				F48F3B0D25F447B6001E5342 /* SettingViewController.swift */,
+				F48F3B1225F447C8001E5342 /* ShareViewController.swift */,
+				F48F3B1725F447D8001E5342 /* SearchViewController.swift */,
 			);
 			path = ToDoAppEx;
 			sourceTree = "<group>";
@@ -258,6 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F3B1325F447C8001E5342 /* ShareViewController.swift in Sources */,
+				F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */,
+				F48F3B0E25F447B6001E5342 /* SettingViewController.swift in Sources */,
+				F48F3B0925F447A3001E5342 /* EditViewController.swift in Sources */,
 				F48F3ADA25F3D8E8001E5342 /* ViewController.swift in Sources */,
 				F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */,
 				F48F3AD825F3D8E8001E5342 /* SceneDelegate.swift in Sources */,

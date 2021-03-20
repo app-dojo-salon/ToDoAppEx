@@ -6,26 +6,30 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EditViewController: UIViewController {
-    
 
-    override func viewDidLoad() {
+	@IBOutlet weak var textField: UITextField!
+
+	override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if(item.tag == 0) {
-//            let homeVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//            homeVC.modalPresentationStyle = .fullScreen
-//            self.present(homeVC, animated: true, completion: nil)
-//        } else if(item.tag == 2) {
-//            let settingVC = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-//            settingVC.modalPresentationStyle = .fullScreen
-//            self.present(settingVC, animated: true, completion: nil)
-//        }
-//    }
+	@IBAction func tapAddButton(_ sender: Any) {
+		guard let newList = textField.text,
+			  !newList.isEmpty else { return }
 
+		let realm = try! Realm()
+		let toDo = TodoItem()
 
+		toDo.title = newList
+
+		try! realm.write {
+			realm.add(toDo)
+			print("新しいリスト追加：\(newList)")
+		}
+		textField.text = ""
+	}
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84342FDA46B03BB410F7DD02 /* Pods_ToDoAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */; };
 		9B9012757307C49A4E96D15A /* Pods_ToDoAppEx_ToDoAppExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD0896660E6E0BD1A1F8FA7 /* Pods_ToDoAppEx_ToDoAppExUITests.framework */; };
+		9F5F499326058303000C2E0A /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F499226058303000C2E0A /* TodoItem.swift */; };
 		A0FCB734FFBD16DCABD42CFE /* Pods_ToDoAppExTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C4A4A23D159A521BF73F0E /* Pods_ToDoAppExTests.framework */; };
 		F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */; };
 		F48F3AD825F3D8E8001E5342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8C201AAE2FAC4C3E510521 /* Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx-ToDoAppExUITests/Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F5F499226058303000C2E0A /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		A1895C9BD803A6D3D6D5D757 /* Pods-ToDoAppEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx.release.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx/Pods-ToDoAppEx.release.xcconfig"; sourceTree = "<group>"; };
 		B589D8C785E573BB12FBFB59 /* Pods-ToDoAppEx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx/Pods-ToDoAppEx.debug.xcconfig"; sourceTree = "<group>"; };
 		BBD0896660E6E0BD1A1F8FA7 /* Pods_ToDoAppEx_ToDoAppExUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx_ToDoAppExUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F5F49912605826E000C2E0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F5F499226058303000C2E0A /* TodoItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F48F3AC925F3D8E8001E5342 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		F48F3AD425F3D8E8001E5342 /* ToDoAppEx */ = {
 			isa = PBXGroup;
 			children = (
+				9F5F49912605826E000C2E0A /* Model */,
 				F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */,
 				F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */,
 				F48F3AD925F3D8E8001E5342 /* ViewController.swift */,
@@ -424,6 +435,7 @@
 				F48F3B0925F447A3001E5342 /* EditViewController.swift in Sources */,
 				F48F3ADA25F3D8E8001E5342 /* ViewController.swift in Sources */,
 				F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */,
+				9F5F499326058303000C2E0A /* TodoItem.swift in Sources */,
 				F48F3AD825F3D8E8001E5342 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

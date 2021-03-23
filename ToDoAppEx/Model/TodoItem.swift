@@ -10,4 +10,5 @@ import RealmSwift
 
 class TodoItem: Object {
 	@objc dynamic var title = ""
+	@objc dynamic var image = ""
 }

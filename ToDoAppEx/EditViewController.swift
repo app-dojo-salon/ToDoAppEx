@@ -24,6 +24,8 @@ class EditViewController: UIViewController {
 		let toDo = TodoItem()
 
 		toDo.title = newList
+		// FIXME: 現状は画像の種類が一枚なので固定値
+		toDo.image = "check"
 
 		try! realm.write {
 			realm.add(toDo)

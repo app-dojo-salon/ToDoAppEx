@@ -6,38 +6,67 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
-//    @IBAction func shareButton(_ sender: Any) {
-//        let shareVC = storyboard?.instantiateViewController(withIdentifier: "ShareViewController") as! ShareViewController
-//        shareVC.modalPresentationStyle = .fullScreen
-//        self.present(shareVC, animated: true, completion: nil)
-//
-//    }
-//    @IBAction func searchButton(_ sender: Any) {
-//        let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-//        searchVC.modalPresentationStyle = .fullScreen
-//        self.present(searchVC, animated: true, completion: nil)
-//
-//    }
+	private var todoList: Results<TodoItem>!
+	private var realm: Realm!
+	private var token: NotificationToken!
+
+	@IBOutlet private weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+		print(#function)
 
+		tableView.dataSource = self
+		realm = try! Realm()
+		todoList = realm.objects(TodoItem.self)
+		token = todoList.observe { [weak self] _ in
+		  self?.reload()
+		}
+		tableView.reloadData()
     }
 
-//    
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if(item.tag == 1) {
-//            let editVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-//            editVC.modalPresentationStyle = .fullScreen
-//            self.present(editVC, animated: true, completion: nil)
-//        } else if(item.tag == 2) {
-//            let settingVC = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-//            settingVC.modalPresentationStyle = .fullScreen
-//            self.present(settingVC, animated: true, completion: nil)
-//        }
-//    }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		print(#function)
 
+		reload()
+	}
+
+	private func deleteTodoItem(at index: Int) {
+		try! realm.write {
+		  realm.delete(todoList[index])
+		}
+	}
+
+	private func reload() {
+		tableView.reloadData()
+	}
+
+	deinit {
+		token.invalidate()
+	}
 }
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return todoList.count
+	}
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "todoItem", for: indexPath) as! ImageCell
+		// カスタムセルにRealmの情報を反映
+		cell.configure(image: todoList[indexPath.row].image,
+					   title: todoList[indexPath.row].title)
+		return cell
+	}
+
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+				   forRowAt indexPath: IndexPath) {
+		deleteTodoItem(at: indexPath.row)
+	}
+}

@@ -15,21 +15,15 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
     }
     @IBAction private func createAccount(_ sender: Any) {
-        
-        if password.text != "" && password.text == confirmPassword.text {
-        
+        if password.text != "" && password.text == confirmPassword.text {        
             let urlString = "http://tk2-235-27465.vs.sakura.ne.jp/insert_account"
-            
             let request = NSMutableURLRequest(url: URL(string: urlString)!)
-            
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
             let params:[String:Any] = [
                 "accountname": self.email.text,
                 "password": self.password.text
             ]
-            
             var errorFlag = false
             do{
                 request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)

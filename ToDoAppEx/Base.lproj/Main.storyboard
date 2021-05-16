@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xix-qy-TEu">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -167,6 +167,7 @@
                     </view>
                     <connections>
                         <outlet property="email" destination="cbG-dF-1Pm" id="frR-zg-FL5"/>
+                        <outlet property="password" destination="LzK-rm-X9x" id="81e-vp-8kf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAv-tR-CZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -231,7 +232,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="confirmPassword" destination="WbH-Qc-jhg" id="O9A-oH-UvP"/>
                         <outlet property="email" destination="bbp-bM-3Qe" id="St4-Dx-3Fm"/>
+                        <outlet property="password" destination="56S-88-dGg" id="SNX-zb-Zad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPE-6W-qul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

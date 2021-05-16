@@ -9,19 +9,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     
-    
-    @IBAction private func login(_ sender: Any) {
-        
+    @IBAction private func login(_ sender: Any) {        
         let urlString = "http://tk2-235-27465.vs.sakura.ne.jp/login"
-        
         let request = NSMutableURLRequest(url: URL(string: urlString)!)
-        
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")        
         let params:[String:Any] = [
-            "email": self.email.text
+            "email": self.email.text,
+            "password": self.password.text
         ]
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)

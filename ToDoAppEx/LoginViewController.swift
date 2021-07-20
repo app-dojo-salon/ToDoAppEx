@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
@@ -37,6 +38,55 @@ class LoginViewController: UIViewController {
                             DispatchQueue.main.async {
                                     let login : Bool = (json as! NSDictionary)["login"] as! Bool
                                     if login {
+                                        let realm = try! Realm()
+                                        let todoItems: Results<TodoItem> = realm.objects(TodoItem.self)
+
+                                        let docs : NSArray = (json as! NSDictionary)["docs"] as! NSArray
+                                        print(docs)
+                                        for doc in docs {
+                                            let item = TodoItem()
+                                            item.itemid = (doc as! NSDictionary)["itemid"] as! Int
+                                            print(item.itemid)
+                                            item.accountname = (doc as! NSDictionary)["accountname"] as! String
+                                            
+                                            var existFlag = false
+                                            for todoitem in todoItems {
+                                                if todoitem.itemid == item.itemid && todoitem.accountname == item.accountname {
+                                                    existFlag = true
+                                                    break
+                                                }
+                                            }
+
+                                            if !existFlag {
+                                                item.category = (doc as! NSDictionary)["category"] as! String
+                                                item.image = (doc as! NSDictionary)["image"] as! String
+                                                item.title = (doc as! NSDictionary)["title"] as! String
+                                                item.startdate = (doc as! NSDictionary)["startdate"] as! String
+                                                item.enddate = (doc as! NSDictionary)["enddate"] as! String
+                                                try! realm.write {
+                                                    realm.add(item)
+                                                }
+                                            }
+                                        }
+                                        
+                                        let allContents: Results<User> = realm.objects(User.self)
+
+                                        if allContents.count >= 1 {
+                                            try! realm.write {
+                                                allContents[0].accountname = self.email.text!
+                                                allContents[0].password = self.password.text!
+                                                print("ユーザーの上書き：\(allContents[0])")
+                                            }
+                                        } else {
+                                            let user = User()
+                                            user.accountname = self.email.text!
+                                            user.password = self.password.text!
+                                            try! realm.write {
+                                                realm.add(user)
+                                            }
+                                        }
+
+                                        
                                         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
                                         secondViewController.modalPresentationStyle = .fullScreen
                                         self.present(secondViewController, animated: false, completion: nil)

@@ -393,8 +393,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="categoryLabel" destination="J1a-xQ-kMm" id="eJ9-Bt-JsI"/>
-                                            <outlet property="endDateLabel" destination="IIG-IZ-XrF" id="wbI-p8-y0h"/>
                                             <outlet property="imageView" destination="I3a-Vj-eQb" id="hBa-I7-lQr"/>
+                                            <outlet property="remainDayLabel" destination="5SC-Tf-o9a" id="uuZ-2E-PjP"/>
                                             <outlet property="startDateLabel" destination="PoY-YC-mDx" id="2aL-gg-FEe"/>
                                             <outlet property="titleImageView" destination="I3a-Vj-eQb" id="J2h-xa-dSM"/>
                                             <outlet property="titleLabel" destination="Y48-6c-Lkq" id="Fwu-Ui-kiI"/>

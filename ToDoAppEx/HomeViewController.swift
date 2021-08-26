@@ -66,7 +66,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 					   title: todoList[indexPath.row].title,
                        category: todoList[indexPath.row].category,
                        startDate: todoList[indexPath.row].startdate,
-                       endDate: todoList[indexPath.row].enddate)
+                       endDate: todoList[indexPath.row].enddate,
+                       status: todoList[indexPath.row].status)
 		return cell
 	}
 

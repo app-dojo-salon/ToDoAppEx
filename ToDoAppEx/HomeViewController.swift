@@ -8,11 +8,11 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
 	private var todoList: Results<TodoItem>!
 	private var realm: Realm!
-	private var token: NotificationToken!
+	private var token: NotificationToken?
 
 	@IBOutlet private weak var tableView: UITableView!
 
@@ -47,11 +47,13 @@ class ViewController: UIViewController {
 	}
 
 	deinit {
-		token.invalidate()
+        if let token = self.token {
+            token.invalidate()
+        }
 	}
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate{
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return todoList.count
 	}
@@ -61,7 +63,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
 		let cell = tableView.dequeueReusableCell(withIdentifier: "todoItem", for: indexPath) as! ImageCell
 		// カスタムセルにRealmの情報を反映
 		cell.configure(image: todoList[indexPath.row].image,
-					   title: todoList[indexPath.row].title)
+					   title: todoList[indexPath.row].title,
+                       category: todoList[indexPath.row].category,
+                       startDate: todoList[indexPath.row].startdate,
+                       endDate: todoList[indexPath.row].enddate,
+                       status: todoList[indexPath.row].status)
 		return cell
 	}
 

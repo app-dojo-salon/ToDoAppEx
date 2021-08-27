@@ -310,7 +310,7 @@
         <!--Home-->
         <scene sceneID="59T-EG-SRc">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="td5-KT-xvf" customClass="ViewController" customModule="ToDoAppEx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="td5-KT-xvf" customClass="HomeViewController" customModule="ToDoAppEx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SSg-B4-tHc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,7 +392,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryLabel" destination="J1a-xQ-kMm" id="eJ9-Bt-JsI"/>
                                             <outlet property="imageView" destination="I3a-Vj-eQb" id="hBa-I7-lQr"/>
+                                            <outlet property="remainDayLabel" destination="5SC-Tf-o9a" id="uuZ-2E-PjP"/>
+                                            <outlet property="startDateLabel" destination="PoY-YC-mDx" id="2aL-gg-FEe"/>
                                             <outlet property="titleImageView" destination="I3a-Vj-eQb" id="J2h-xa-dSM"/>
                                             <outlet property="titleLabel" destination="Y48-6c-Lkq" id="Fwu-Ui-kiI"/>
                                         </connections>
@@ -427,7 +430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Whq-4t-o22" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908.69565217391312" y="-703.125"/>
+            <point key="canvasLocation" x="907.69230769230762" y="-703.79146919431275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WIx-tg-Wge">
@@ -515,8 +518,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5wf-5X-na8"/>
-        <segue reference="4H5-DS-sG8"/>
+        <segue reference="BJx-tT-wAk"/>
+        <segue reference="38O-Zn-vJk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo-1" width="250" height="174"/>

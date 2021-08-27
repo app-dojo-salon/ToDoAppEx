@@ -19,6 +19,10 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
+
     func setToDoItem(contents: Results<TodoItem>, users: Results<User>, list: String, category: String) -> TodoItem {
         let toDo = TodoItem()
         toDo.itemid = contents.count + 1
@@ -34,6 +38,7 @@ class EditViewController: UIViewController {
 
         return toDo
     }
+
 	@IBAction func tapAddButton(_ sender: Any) {
         guard let newList = textField.text, !newList.isEmpty else { return }
         guard let newCategory = categoryTextField.text, !newCategory.isEmpty else { return }
@@ -63,9 +68,9 @@ class EditViewController: UIViewController {
     
     private func goToNext(data: Data?) {
         DispatchQueue.main.async {
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            secondViewController.modalPresentationStyle = .fullScreen
-            self.present(secondViewController, animated: true, completion: nil)
+            let UINavigationController = self.tabBarController?.viewControllers?[1]
+            self.tabBarController?.selectedViewController = UINavigationController
+
         }
     }
 }

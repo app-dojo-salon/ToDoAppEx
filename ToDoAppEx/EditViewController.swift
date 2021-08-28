@@ -60,7 +60,8 @@ class EditViewController: UIViewController {
                 "category": toDo.category,
                 "startdate": toDo.startdate,
                 "enddate": toDo.enddate,
-                "image": toDo.image
+                "image": toDo.image,
+                "status": toDo.status
             ],
             completion: self.goToNext(data:)
         )

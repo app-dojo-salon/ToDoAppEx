@@ -16,8 +16,8 @@ class TodoItem: Object {
     @objc dynamic var category = ""
     @objc dynamic var startdate = ""
     @objc dynamic var enddate = ""
+    @objc dynamic var status = false
     override static func primaryKey() -> String? {
         return "itemid"
     }
-
 }

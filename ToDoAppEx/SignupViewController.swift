@@ -11,8 +11,24 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
+    let userDefaults = UserDefaults()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userDefaults.bool(forKey: "login") {
+            DispatchQueue.main.async {
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                secondViewController.modalPresentationStyle = .fullScreen
+                self.present(secondViewController, animated: false, completion: nil)
+            }
+        }
+    }
+    @IBAction func tappedLoginButton(_ sender: Any) {
+        DispatchQueue.main.async {
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            secondViewController.modalPresentationStyle = .fullScreen
+            self.present(secondViewController, animated: true, completion: nil)
+        }
     }
     @IBAction private func createAccount(_ sender: Any) {
         if password.text != "" && password.text == confirmPassword.text {
@@ -35,6 +51,5 @@ class SignupViewController: UIViewController {
             secondViewController.modalPresentationStyle = .fullScreen
             self.present(secondViewController, animated: true, completion: nil)
         }
-        
     }
 }

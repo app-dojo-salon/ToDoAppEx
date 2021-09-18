@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class TodoItem: Object {
-    @objc dynamic var itemid = 0
+    @objc dynamic var itemid = ""
     @objc dynamic var accountname = ""
     @objc dynamic var title = ""
 	@objc dynamic var image = ""

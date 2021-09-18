@@ -11,7 +11,7 @@ import RealmSwift
 class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+    let userDefaults = UserDefaults()
     @IBAction private func login(_ sender: Any) {
         let serverRequest: ServerRequest = ServerRequest()
         serverRequest.sendServerRequest(
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
                     print(docs)
                     for doc in docs {
                         let item = TodoItem()
-                        item.itemid = (doc as! NSDictionary)["itemid"] as! Int
+                        item.itemid = (doc as! NSDictionary)["itemid"] as! String
                         print(item.itemid)
                         item.accountname = (doc as! NSDictionary)["accountname"] as! String
                         
@@ -77,8 +77,7 @@ class LoginViewController: UIViewController {
                             realm.add(user)
                         }
                     }
-
-                    
+                    self.userDefaults.set(true, forKey: "login")
                     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
                     secondViewController.modalPresentationStyle = .fullScreen
                     self.present(secondViewController, animated: false, completion: nil)

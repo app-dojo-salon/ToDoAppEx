@@ -9,10 +9,10 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    @objc dynamic var userid = 0
+//    @objc dynamic var userid = ""
     @objc dynamic var accountname = ""
     @objc dynamic var password = ""
-    override static func primaryKey() -> String? {
-        return "userid"
-    }
+//    override static func primaryKey() -> String? {
+//        return "userid"
+//    }
 }

@@ -15,6 +15,13 @@ extension Date {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: self)
     }
+    func toStringWithCurrentLocaleMillis() -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        return formatter.string(from: self)
+    }
 
     func getIntervalDate(start: String, end: String) -> Int {
         let formatter = DateFormatter()

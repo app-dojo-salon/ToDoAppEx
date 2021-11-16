@@ -267,10 +267,19 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERH-Wb-fiI">
+                                <rect key="frame" x="176" y="704" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="tappedLoginButton:" destination="xix-qy-TEu" eventType="touchUpInside" id="cZb-9R-vYu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4k3-Ea-mhu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ERH-Wb-fiI" firstAttribute="centerX" secondItem="QRH-vW-UVg" secondAttribute="centerX" id="GUI-qJ-FYa"/>
+                            <constraint firstItem="ERH-Wb-fiI" firstAttribute="top" secondItem="aTg-zz-Tdp" secondAttribute="bottom" constant="40" id="MBq-30-Hao"/>
                             <constraint firstItem="aTg-zz-Tdp" firstAttribute="centerX" secondItem="QRH-vW-UVg" secondAttribute="centerX" id="OzZ-gx-5PC"/>
                             <constraint firstItem="aTg-zz-Tdp" firstAttribute="leading" secondItem="4k3-Ea-mhu" secondAttribute="leading" constant="20" id="Qy1-VI-5vI"/>
                             <constraint firstItem="aTg-zz-Tdp" firstAttribute="top" secondItem="4k3-Ea-mhu" secondAttribute="top" constant="40" id="a0t-N4-7BI"/>

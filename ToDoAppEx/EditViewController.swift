@@ -27,7 +27,7 @@ class EditViewController: UIViewController {
         let toDo = TodoItem()
         let uuid = UUID()
         let date = Date()
-        toDo.itemid = uuid.uuidString + date.toStringWithCurrentLocaleMillis() //contents.count + 1
+        toDo.itemid = uuid.uuidString
         // FIXME: アカウントは仮でyoshikiの固定値
         toDo.accountname = users[0].accountname
         // FIXME: 現状は画像の種類が一枚なので固定値

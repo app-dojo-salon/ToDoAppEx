@@ -37,7 +37,9 @@ class SignupViewController: UIViewController {
                 urlString: "http://tk2-235-27465.vs.sakura.ne.jp/insert_account",
                 params: [
                     "accountname": self.email.text,
-                    "password": self.password.text
+                    "password": self.password.text,
+                    "publicprivate": false,
+                    "sharepassword": ""
                 ],
                 completion: self.goToNext(data:))
 

@@ -54,4 +54,7 @@ class SignupViewController: UIViewController {
             self.present(secondViewController, animated: true, completion: nil)
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

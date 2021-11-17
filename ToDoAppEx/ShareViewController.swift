@@ -13,7 +13,7 @@ class ShareViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var shareAccounts: [String] = []
+    private var shareAccounts: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,67 +32,17 @@ class ShareViewController: UIViewController {
     func setShareAccounts(data: Data?) {
         shareAccounts = []
         do {
-            // dataをJSONパースし、変数"getJson"に格納
             let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
             DispatchQueue.main.async {
-//                let login : Bool = (json as! NSDictionary)["login"] as! Bool
-//                if login {
-//                    let realm = try! Realm()
-//                    let todoItems: Results<TodoItem> = realm.objects(TodoItem.self)
-
-                    let docs : NSArray = json as! NSArray
-                    print(docs)
-                    for doc in docs {
-//                        let item = TodoItem()
-//                        item.itemid = (doc as! NSDictionary)["itemid"] as! String
-//                        print(item.itemid)
-                        if ((doc as! NSDictionary)["publicprivate"] != nil && (doc as! NSDictionary)["publicprivate"] as! Bool == true) {
-                            self.shareAccounts.append((doc as! NSDictionary)["accountname"] as! String)
-                        }
-                        
-//                        var existFlag = false
-//                        for todoitem in todoItems {
-//                            if todoitem.itemid == item.itemid && todoitem.accountname == item.accountname {
-//                                existFlag = true
-//                                break
-//                            }
-//                        }
-//
-//                        if !existFlag {
-//                            item.category = (doc as! NSDictionary)["category"] as! String
-//                            item.image = (doc as! NSDictionary)["image"] as! String
-//                            item.title = (doc as! NSDictionary)["title"] as! String
-//                            item.startdate = (doc as! NSDictionary)["startdate"] as! String
-//                            item.enddate = (doc as! NSDictionary)["enddate"] as! String
-//                            try! realm.write {
-//                                realm.add(item)
-//                            }
-//                        }
+                let docs : NSArray = json as! NSArray
+                print(docs)
+                for doc in docs {
+                    guard let _doc = doc as? NSDictionary else { return }
+                    if _doc["publicprivate"] != nil,
+                       _doc["publicprivate"] as! Bool {
+                        self.shareAccounts.append((doc as! NSDictionary)["accountname"] as! String)
                     }
-//
-//                    let allContents: Results<User> = realm.objects(User.self)
-//
-//                    if allContents.count >= 1 {
-//                        try! realm.write {
-//                            allContents[0].accountname = self.email.text!
-//                            allContents[0].password = self.password.text!
-//                            print("ユーザーの上書き：\(allContents[0])")
-//                        }
-//                    } else {
-//                        let user = User()
-//                        user.accountname = self.email.text!
-//                        user.password = self.password.text!
-//                        try! realm.write {
-//                            realm.add(user)
-//                        }
-//                    }
-//                    self.userDefaults.set(true, forKey: "login")
-//                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-//                    secondViewController.modalPresentationStyle = .fullScreen
-//                    self.present(secondViewController, animated: false, completion: nil)
-//                } else {
-//                    self.email.text = "error!!"
-//                }
+                }                
             }
         } catch {
             print ("json error")
@@ -103,21 +53,6 @@ class ShareViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if(item.tag == 0) {
-//            let homeVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//            homeVC.modalPresentationStyle = .fullScreen
-//            self.present(homeVC, animated: true, completion: nil)
-//        } else if(item.tag == 1) {
-//            let editVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-//            editVC.modalPresentationStyle = .fullScreen
-//            self.present(editVC, animated: true, completion: nil)
-//        } else if(item.tag == 2) {
-//            let settingVC = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-//            settingVC.modalPresentationStyle = .fullScreen
-//            self.present(settingVC, animated: true, completion: nil)
-//        }
-//    }
 
     @IBAction func tappedShareButton(_ sender: Any) {
         let realm = try! Realm()

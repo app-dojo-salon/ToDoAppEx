@@ -6,30 +6,83 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ShareViewController: UIViewController {
 
+
+    @IBOutlet weak var tableView: UITableView!
+
+    private var shareAccounts: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getShareAccounts(data: nil)
+        tableView.dataSource = self
     }
 
+    func getShareAccounts(data: Data?) {
+        let serverRequest: ServerRequest = ServerRequest()
+        serverRequest.sendServerRequest(
+            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/get_accounts",
+            params: [:],
+            completion: self.setShareAccounts(data:))
+    }
+    
+    func setShareAccounts(data: Data?) {
+        shareAccounts = []
+        do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+            DispatchQueue.main.async {
+                let docs : NSArray = json as! NSArray
+                print(docs)
+                for doc in docs {
+                    guard let _doc = doc as? NSDictionary else { return }
+                    if _doc["publicprivate"] != nil,
+                       _doc["publicprivate"] as! Bool {
+                        self.shareAccounts.append((doc as! NSDictionary)["accountname"] as! String)
+                    }
+                }                
+            }
+        } catch {
+            print ("json error")
+            return
+        }
 
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if(item.tag == 0) {
-//            let homeVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//            homeVC.modalPresentationStyle = .fullScreen
-//            self.present(homeVC, animated: true, completion: nil)
-//        } else if(item.tag == 1) {
-//            let editVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-//            editVC.modalPresentationStyle = .fullScreen
-//            self.present(editVC, animated: true, completion: nil)
-//        } else if(item.tag == 2) {
-//            let settingVC = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-//            settingVC.modalPresentationStyle = .fullScreen
-//            self.present(settingVC, animated: true, completion: nil)
-//        }
-//    }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 
+    @IBAction func tappedShareButton(_ sender: Any) {
+        let realm = try! Realm()
+        let allContents: Results<User> = realm.objects(User.self)
 
+        let serverRequest: ServerRequest = ServerRequest()
+        serverRequest.sendServerRequest(
+            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/update_account",
+            params: [
+                "accountname": allContents[0].accountname,
+                "password": allContents[0].password,
+                "publicprivate": true,
+                "sharepassword": ""
+
+            ],
+            completion: self.getShareAccounts(data:))
+
+    }
+    
 }
 
+extension ShareViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shareAccounts.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shareAccount", for: indexPath) as! ShareAccountCell
+        cell.configure(title: shareAccounts[indexPath.row])
+        return cell
+    }
+    
+}

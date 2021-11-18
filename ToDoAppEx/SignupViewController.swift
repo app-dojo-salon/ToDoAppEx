@@ -37,7 +37,9 @@ class SignupViewController: UIViewController {
                 urlString: "http://tk2-235-27465.vs.sakura.ne.jp/insert_account",
                 params: [
                     "accountname": self.email.text,
-                    "password": self.password.text
+                    "password": self.password.text,
+                    "publicprivate": false,
+                    "sharepassword": ""
                 ],
                 completion: self.goToNext(data:))
 
@@ -51,5 +53,8 @@ class SignupViewController: UIViewController {
             secondViewController.modalPresentationStyle = .fullScreen
             self.present(secondViewController, animated: true, completion: nil)
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

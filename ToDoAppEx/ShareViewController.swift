@@ -18,6 +18,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         getShareAccounts(data: nil)
+        tableView.delegate = self
         tableView.dataSource = self
     }
 
@@ -84,5 +85,10 @@ extension ShareViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(title: shareAccounts[indexPath.row])
         return cell
     }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "ShareTodoItemListViewController") as! ShareTodoItemListViewController
+        nextVC.configure(shareAccount: shareAccounts[indexPath.row])
+        self.present(nextVC, animated: true, completion: nil)
+    }
 }

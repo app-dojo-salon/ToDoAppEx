@@ -153,9 +153,52 @@
 			children = (
 				9F5F499226058303000C2E0A /* TodoItem.swift */,
 				F44C387D26A67C8400D41ED7 /* User.swift */,
-				F421746326AB9B5000B133F1 /* ServerRequest.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9FA2207F27ADE90300CFD239 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9F5F49BB26094FAA000C2E0A /* ImageCell.swift */,
+				9F6384C526460BCA001DFEBD /* CustomView.xib */,
+				9F6384C026460B93001DFEBD /* CustomView.swift */,
+				F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */,
+				F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */,
+				F492B7A4263BC62800E2F11D /* TabBarController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9FA2208027ADE95400CFD239 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F48F3AD925F3D8E8001E5342 /* HomeViewController.swift */,
+				F48F3B0825F447A3001E5342 /* EditViewController.swift */,
+				F48F3B0D25F447B6001E5342 /* SettingViewController.swift */,
+				F48F3B1225F447C8001E5342 /* ShareViewController.swift */,
+				F48F3B1725F447D8001E5342 /* SearchViewController.swift */,
+				F47286032622C4EA002D6F86 /* LoginViewController.swift */,
+				F47286082622CC6F002D6F86 /* SignupViewController.swift */,
+				F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9FA2208227ADF15500CFD239 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F421746526ABAC2500B133F1 /* Date+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9FA2208327ADF18F00CFD239 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F421746326AB9B5000B133F1 /* ServerRequest.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F48F3AC925F3D8E8001E5342 = {
@@ -183,28 +226,17 @@
 		F48F3AD425F3D8E8001E5342 /* ToDoAppEx */ = {
 			isa = PBXGroup;
 			children = (
+				9FA2208327ADF18F00CFD239 /* API */,
+				9FA2208227ADF15500CFD239 /* Utils */,
+				9FA2208027ADE95400CFD239 /* ViewController */,
+				9FA2207F27ADE90300CFD239 /* View */,
 				9F5F49912605826E000C2E0A /* Model */,
 				F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */,
 				F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */,
-				9F5F49BB26094FAA000C2E0A /* ImageCell.swift */,
-				F48F3AD925F3D8E8001E5342 /* HomeViewController.swift */,
 				F48F3ADB25F3D8E8001E5342 /* Main.storyboard */,
 				F48F3ADE25F3D8EA001E5342 /* Assets.xcassets */,
 				F48F3AE025F3D8EA001E5342 /* LaunchScreen.storyboard */,
 				F48F3AE325F3D8EA001E5342 /* Info.plist */,
-				F48F3B0825F447A3001E5342 /* EditViewController.swift */,
-				F48F3B0D25F447B6001E5342 /* SettingViewController.swift */,
-				F48F3B1225F447C8001E5342 /* ShareViewController.swift */,
-				F48F3B1725F447D8001E5342 /* SearchViewController.swift */,
-				F47286032622C4EA002D6F86 /* LoginViewController.swift */,
-				F47286082622CC6F002D6F86 /* SignupViewController.swift */,
-				9F6384C026460B93001DFEBD /* CustomView.swift */,
-				9F6384C526460BCA001DFEBD /* CustomView.xib */,
-				F492B7A4263BC62800E2F11D /* TabBarController.swift */,
-				F421746526ABAC2500B133F1 /* Date+Extension.swift */,
-				F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */,
-				F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */,
-				F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */,
 			);
 			path = ToDoAppEx;
 			sourceTree = "<group>";

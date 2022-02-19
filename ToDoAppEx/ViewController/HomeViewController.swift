@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
 		}
 
         // TableViewの設定メソッド
-        setTableViewCinfig()
+        setTableViewConfig()
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController {
-    private func setTableViewCinfig() {
+    private func setTableViewConfig() {
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -60,7 +60,7 @@ extension HomeViewController {
 
     private func deleteTodoItem(at index: Int) {
         try! realm.write {
-          realm.delete(todoList[index])
+            realm.delete(todoList[index])
         }
     }
 

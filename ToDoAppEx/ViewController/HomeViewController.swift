@@ -20,13 +20,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 		print(#function)
 
-		tableView.dataSource = self
 		realm = try! Realm()
 		todoList = realm.objects(TodoItem.self)
 		token = todoList.observe { [weak self] _ in
 		  self?.reload()
 		}
-		tableView.reloadData()
+
+        // TableViewの設定メソッド
+        setTableViewConfig()
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -36,21 +37,36 @@ class HomeViewController: UIViewController {
 		reload()
 	}
 
-	private func deleteTodoItem(at index: Int) {
-		try! realm.write {
-		  realm.delete(todoList[index])
-		}
-	}
-
-	private func reload() {
-		tableView.reloadData()
-	}
-
 	deinit {
         if let token = self.token {
             token.invalidate()
         }
 	}
+}
+
+
+
+extension HomeViewController {
+    private func setTableViewConfig() {
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        // セルの高さを固定
+        tableView.estimatedRowHeight = 100
+        // 区切り線を左端まで伸ばす
+        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.reloadData()
+    }
+
+    private func deleteTodoItem(at index: Int) {
+        try! realm.write {
+            realm.delete(todoList[index])
+        }
+    }
+
+    private func reload() {
+        tableView.reloadData()
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate{

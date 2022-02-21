@@ -19,6 +19,7 @@ final class ImageCell: UITableViewCell {
                    startDate: String, endDate: String, status: Bool) {
 		titleLabel.text = title
         categoryLabel.text = category
+        print(titleLabel.text)
 
         setDate(startDate: startDate, endDate: endDate) { start, interval in
             startDateLabel.text = start

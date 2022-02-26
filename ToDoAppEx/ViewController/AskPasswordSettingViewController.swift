@@ -12,10 +12,12 @@ class AskPasswordSettingViewController: UIViewController {
     @IBOutlet weak var explanationLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    func getShareAccounts(data: Data?) {
+
+    func dismissScreen(data: Data?) {
         let serverRequest: ServerRequest = ServerRequest()
         serverRequest.sendServerRequest(
             urlString: "http://tk2-235-27465.vs.sakura.ne.jp/get_accounts",
@@ -29,9 +31,7 @@ class AskPasswordSettingViewController: UIViewController {
         }
     }
 
-
     @IBAction func settingPasswordButtonTapped(_ sender: Any) {
-
         if passwordTextField.text != "" &&
             passwordTextField.text == passwordConfirmTextField.text {
             let realm = try! Realm()
@@ -47,11 +47,12 @@ class AskPasswordSettingViewController: UIViewController {
                     "sharepassword": passwordTextField.text!
 
                 ],
-                completion: self.getShareAccounts(data:))
+                completion: self.dismissScreen(data:))
         } else {
             explanationLabel.text = "パスワードが有効ではありません"
         }
     }
+
     @IBAction func notSettingPasswordButtonTapped(_ sender: Any) {
         let realm = try! Realm()
         let allContents: Results<User> = realm.objects(User.self)
@@ -66,6 +67,6 @@ class AskPasswordSettingViewController: UIViewController {
                 "sharepassword": ""
 
             ],
-            completion: self.getShareAccounts(data:))
+            completion: self.dismissScreen(data:))
     }
 }

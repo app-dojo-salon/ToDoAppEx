@@ -18,14 +18,6 @@ class AskPasswordSettingViewController: UIViewController {
     }
 
     func dismissScreen(data: Data?) {
-        let serverRequest: ServerRequest = ServerRequest()
-        serverRequest.sendServerRequest(
-            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/get_accounts",
-            params: [:],
-            completion: self.setShareAccounts(data:))
-    }
-
-    func setShareAccounts(data: Data?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true)
         }

@@ -56,20 +56,10 @@ class ShareViewController: UIViewController {
     }
 
     @IBAction func tappedShareButton(_ sender: Any) {
-        let realm = try! Realm()
-        let allContents: Results<User> = realm.objects(User.self)
 
-        let serverRequest: ServerRequest = ServerRequest()
-        serverRequest.sendServerRequest(
-            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/update_account",
-            params: [
-                "accountname": allContents[0].accountname,
-                "password": allContents[0].password,
-                "publicprivate": true,
-                "sharepassword": ""
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "AskPasswordSettingViewController") as! AskPasswordSettingViewController
+        present(nextVC, animated: true, completion: nil)
 
-            ],
-            completion: self.getShareAccounts(data:))
 
     }
     

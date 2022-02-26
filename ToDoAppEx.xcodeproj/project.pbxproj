@@ -33,6 +33,7 @@
 		F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B1725F447D8001E5342 /* SearchViewController.swift */; };
 		F492B7A5263BC62800E2F11D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492B7A4263BC62800E2F11D /* TabBarController.swift */; };
 		F4C6A3482744013B007E60F2 /* ShareAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */; };
+		F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */; };
 		F4FC931A277CF43B001B9A36 /* ShareTodoItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */; };
 		F4FC931C277D04F2001B9A36 /* ShareTodoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		F48F3B1725F447D8001E5342 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F492B7A4263BC62800E2F11D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAccountCell.swift; sourceTree = "<group>"; };
+		F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskPasswordSettingViewController.swift; sourceTree = "<group>"; };
 		F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTodoItemListViewController.swift; sourceTree = "<group>"; };
 		F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTodoItemCell.swift; sourceTree = "<group>"; };
 		FBFD9188D0AD5461FB6BF390 /* Pods-ToDoAppExTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppExTests.release.xcconfig"; path = "Target Support Files/Pods-ToDoAppExTests/Pods-ToDoAppExTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				F47286032622C4EA002D6F86 /* LoginViewController.swift */,
 				F47286082622CC6F002D6F86 /* SignupViewController.swift */,
 				F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */,
+				F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */,
 				F47286092622CC6F002D6F86 /* SignupViewController.swift in Sources */,
 				9F5F49BC26094FAA000C2E0A /* ImageCell.swift in Sources */,
+				F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */,
 				F48F3B0E25F447B6001E5342 /* SettingViewController.swift in Sources */,
 				F4C6A3482744013B007E60F2 /* ShareAccountCell.swift in Sources */,
 				F4FC931A277CF43B001B9A36 /* ShareTodoItemListViewController.swift in Sources */,
@@ -694,7 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 44SQBVTPVY;
+				DEVELOPMENT_TEAM = A98KZDWY2P;
 				INFOPLIST_FILE = ToDoAppEx/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -715,7 +719,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 44SQBVTPVY;
+				DEVELOPMENT_TEAM = A98KZDWY2P;
 				INFOPLIST_FILE = ToDoAppEx/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (

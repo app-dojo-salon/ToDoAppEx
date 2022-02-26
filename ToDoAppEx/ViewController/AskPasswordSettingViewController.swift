@@ -36,7 +36,6 @@ class AskPasswordSettingViewController: UIViewController {
             passwordTextField.text == passwordConfirmTextField.text {
             let realm = try! Realm()
             let allContents: Results<User> = realm.objects(User.self)
-
             let serverRequest: ServerRequest = ServerRequest()
             serverRequest.sendServerRequest(
                 urlString: "http://tk2-235-27465.vs.sakura.ne.jp/update_account",
@@ -45,7 +44,6 @@ class AskPasswordSettingViewController: UIViewController {
                     "password": allContents[0].password,
                     "publicprivate": true,
                     "sharepassword": passwordTextField.text!
-
                 ],
                 completion: self.dismissScreen(data:))
         } else {
@@ -65,7 +63,6 @@ class AskPasswordSettingViewController: UIViewController {
                 "password": allContents[0].password,
                 "publicprivate": true,
                 "sharepassword": ""
-
             ],
             completion: self.dismissScreen(data:))
     }

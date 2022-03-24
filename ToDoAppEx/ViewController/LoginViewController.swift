@@ -11,7 +11,9 @@ import RealmSwift
 class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+
     let userDefaults = UserDefaults()
+
     @IBAction private func login(_ sender: Any) {
         let serverRequest: ServerRequest = ServerRequest()
         serverRequest.sendServerRequest(
@@ -90,6 +92,7 @@ class LoginViewController: UIViewController {
             return
         }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

@@ -180,13 +180,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="neR-o8-Yq1">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="NjH-zP-6AQ">
-                            <connections>
-                                <segue destination="CHX-AS-gQP" kind="show" id="FvJ-l6-p3f"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="NjH-zP-6AQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchButton" destination="NjH-zP-6AQ" id="0he-6o-XgG"/>
                         <outlet property="tableView" destination="wAR-gc-HAg" id="Npu-CI-73J"/>
                     </connections>
                 </viewController>
@@ -377,16 +374,15 @@
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="S8T-II-nY2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="cloud" catalog="system" id="sEz-ds-nV0">
-                            <connections>
-                                <segue destination="4a7-WS-qqK" kind="show" id="meS-CU-nRu"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="cloud" catalog="system" id="sEz-ds-nV0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="shareButton" destination="sEz-ds-nV0" id="Akl-kI-1wb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZE-Mh-WBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="419"/>
+            <point key="canvasLocation" x="1849" y="443"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="KRv-Kd-NAM">

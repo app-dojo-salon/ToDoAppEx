@@ -10,13 +10,14 @@ import RealmSwift
 
 class ShareViewController: UIViewController {
 
+    @IBOutlet weak var searchButton: UIBarButtonItem!
 
     @IBOutlet weak var tableView: UITableView!
 
     private var shareAccounts: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchButton.tintColor = UIColor.clear
         getShareAccounts(data: nil)
         tableView.delegate = self
         tableView.dataSource = self

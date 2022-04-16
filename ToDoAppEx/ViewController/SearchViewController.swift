@@ -9,8 +9,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareButton.tintColor = UIColor.clear
     }
 
 //    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

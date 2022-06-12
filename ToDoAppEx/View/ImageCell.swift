@@ -26,8 +26,10 @@ final class ImageCell: UITableViewCell {
             startDateLabel.text = "期限日: \(end)"
             if (interval > 0) {
                 remainDayLabel.text = "残り\(interval)日"
+                remainDayLabel.textColor = .black
             } else if (interval == 0) {
                 remainDayLabel.text = "本日"
+                remainDayLabel.textColor = .black
             } else {
                 remainDayLabel.text = "期限切れ"
                 remainDayLabel.textColor = .red

@@ -64,6 +64,12 @@ extension HomeViewController {
         }
     }
 
+    private func changeStatusToDoItem(index: Int) {
+        try! realm.write {
+            todoList[index].status = !todoList[index].status        }
+        reload()
+    }
+
     private func reload() {
         tableView.reloadData()
     }
@@ -91,4 +97,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 				   forRowAt indexPath: IndexPath) {
 		deleteTodoItem(at: indexPath.row)
 	}
+
+    // ToDoのステータス状態を変更するメソッド
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        changeStatusToDoItem(index: indexPath.row)
+    }
+
 }

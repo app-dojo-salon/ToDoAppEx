@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class EditViewController: UIViewController {
 
@@ -23,8 +22,9 @@ class EditViewController: UIViewController {
             self.view.endEditing(true)
     }
 
-    func setToDoItem(contents: Results<TodoItem>, users: Results<User>, list: String, category: String) -> TodoItem {
+    func setToDoItem(list: String, category: String) -> TodoItem {
         let toDo = TodoItem()
+        let users = RealmManager.shared.getItemInRealm(type: User.self)
         let uuid = UUID()
         let date = Date()
         toDo.itemid = uuid.uuidString
@@ -45,12 +45,9 @@ class EditViewController: UIViewController {
         guard let newList = textField.text, !newList.isEmpty else { return }
         guard let newCategory = categoryTextField.text, !newCategory.isEmpty else { return }
 
-        let realm = try! Realm()
-        let toDo = setToDoItem(contents: realm.objects(TodoItem.self), users: realm.objects(User.self), list: newList, category: newCategory)
-        try! realm.write {
-            realm.add(toDo)
-            print("新しいリスト追加：\(newList)")
-        }
+        let toDo = setToDoItem(list: newList, category: newCategory)
+
+        RealmManager.shared.writeItem(toDo)
 
         let serverRequest: ServerRequest = ServerRequest()
         serverRequest.sendServerRequest(

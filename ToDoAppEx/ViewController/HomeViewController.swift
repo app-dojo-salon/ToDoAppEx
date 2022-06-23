@@ -9,9 +9,7 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UIViewController {
-
 	private var todoList: Results<TodoItem>!
-	private var realm: Realm!
 	private var token: NotificationToken?
 
 	@IBOutlet private weak var tableView: UITableView!
@@ -19,8 +17,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		print(#function)
-
-        realm = try! Realm()
 
         // ToDoListをRealmから取得してオブザーバーを仕掛ける
         setTodoListConfig()

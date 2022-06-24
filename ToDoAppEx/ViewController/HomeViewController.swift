@@ -9,9 +9,7 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UIViewController {
-
 	private var todoList: Results<TodoItem>!
-	private var realm: Realm!
 	private var token: NotificationToken?
 
 	@IBOutlet private weak var tableView: UITableView!
@@ -20,11 +18,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 		print(#function)
 
-		realm = try! Realm()
-		todoList = realm.objects(TodoItem.self)
-		token = todoList.observe { [weak self] _ in
-		  self?.reload()
-		}
+        // ToDoListをRealmから取得してオブザーバーを仕掛ける
+        setTodoListConfig()
 
         // TableViewの設定メソッド
         setTableViewConfig()
@@ -45,8 +40,14 @@ class HomeViewController: UIViewController {
 }
 
 
-
 extension HomeViewController {
+    private func setTodoListConfig() {
+        todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
+        token = todoList.observe { [weak self] _ in
+          self?.reload()
+        }
+    }
+
     private func setTableViewConfig() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -59,14 +60,11 @@ extension HomeViewController {
     }
 
     private func deleteTodoItem(at index: Int) {
-        try! realm.write {
-            realm.delete(todoList[index])
-        }
+        RealmManager.shared.deleteItem(item: todoList[index])
     }
 
     private func changeStatusToDoItem(index: Int) {
-        try! realm.write {
-            todoList[index].status = !todoList[index].status        }
+        RealmManager.shared.changeStatusToDoItem(type: TodoItem.self, index: index)
         reload()
     }
 

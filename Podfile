@@ -7,6 +7,9 @@ target 'ToDoAppEx' do
   pod 'RealmSwift'
   # Pods for ToDoAppEx
 
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
+
   target 'ToDoAppExTests' do
     inherit! :search_paths
     # Pods for testing

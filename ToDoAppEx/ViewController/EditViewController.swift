@@ -26,7 +26,6 @@ class EditViewController: UIViewController {
         let toDo = TodoItem()
         let users = RealmManager.shared.getItemInRealm(type: User.self)
         let uuid = UUID()
-        let date = Date()
         toDo.itemid = uuid.uuidString
         // FIXME: アカウントは仮でyoshikiの固定値
         toDo.accountname = users[0].accountname

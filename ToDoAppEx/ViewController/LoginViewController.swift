@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
         serverRequest.sendServerRequest(
             urlString: "http://tk2-235-27465.vs.sakura.ne.jp/login",
             params: [
-                "email": self.email.text,
-                "password": self.password.text
+                "email": self.email.text ?? "",
+                "password": self.password.text ?? ""
             ],
             completion: self.writeModelAndGoToNext(data:))
     }

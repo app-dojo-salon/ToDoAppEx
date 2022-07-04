@@ -41,6 +41,29 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController {
+    /// 吹き出しメニューを作成する
+    func makeContextMenu() -> UIMenu {
+        let fight = UIAction(title: "FIGHT", image: UIImage(systemName: "figure.wave")) { action in
+            print("編集")
+            let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+            self.present(editVC, animated: true, completion: nil)
+        }
+
+        let bag = UIAction(title: "BAG", image: UIImage(systemName: "bag")) { action in
+            print("bag")
+        }
+
+        let pokemon = UIAction(title: "POKEMON", image: UIImage(systemName: "hare")) { action in
+            print("pokemon")
+        }
+
+        let run = UIAction(title: "RUN", image: UIImage(systemName: "figure.walk")) { action in
+            print("run")
+        }
+
+        return UIMenu(title: "Menu", children: [fight, bag, pokemon, run])
+    }
+
     private func setTodoListConfig() {
         todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
         token = todoList.observe { [weak self] _ in
@@ -77,6 +100,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return todoList.count
 	}
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+            return self.makeContextMenu()
+        })
+    }
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		

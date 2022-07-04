@@ -7,7 +7,13 @@
 
 import UIKit
 
+enum EditType {
+    case create
+    case edit
+}
+
 class EditViewController: UIViewController {
+    private var type = EditType.create
 
 	@IBOutlet weak var textField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -16,10 +22,23 @@ class EditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        switch type {
+        case .create:
+            print("新規作成の編集画面を構成")
+        case .edit:
+            print("既存タスク編集の編集画面を構成")
+            
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
+    }
+
+    // 編集画面をボトムナビゲーションかホーム画面からかによって処理を分ける
+    func configure(type: EditType) {
+        self.type = type
     }
 
     func setToDoItem(list: String, category: String) -> TodoItem {

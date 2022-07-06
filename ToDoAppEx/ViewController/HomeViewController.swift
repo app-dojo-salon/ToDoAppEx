@@ -42,26 +42,17 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     /// 吹き出しメニューを作成する
-    func makeContextMenu() -> UIMenu {
-        let fight = UIAction(title: "FIGHT", image: UIImage(systemName: "figure.wave")) { action in
+    func makeContextMenu(index: Int) -> UIMenu {
+        let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
             print("編集")
             let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+            editVC.configure(type: .edit(index: index))
             self.present(editVC, animated: true, completion: nil)
         }
 
-        let bag = UIAction(title: "BAG", image: UIImage(systemName: "bag")) { action in
-            print("bag")
         }
 
-        let pokemon = UIAction(title: "POKEMON", image: UIImage(systemName: "hare")) { action in
-            print("pokemon")
-        }
-
-        let run = UIAction(title: "RUN", image: UIImage(systemName: "figure.walk")) { action in
-            print("run")
-        }
-
-        return UIMenu(title: "Menu", children: [fight, bag, pokemon, run])
+        return UIMenu(title: "Menu", children: [edit, delete])
     }
 
     private func setTodoListConfig() {
@@ -101,9 +92,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 		return todoList.count
 	}
 
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
-            return self.makeContextMenu()
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        let index = indexPath.row
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: { suggestedActions in
+            return self.makeContextMenu(index: index)
         })
     }
 

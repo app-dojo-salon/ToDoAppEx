@@ -50,6 +50,9 @@ extension HomeViewController {
             self.present(editVC, animated: true, completion: nil)
         }
 
+        let delete = UIAction(title: "削除", image: UIImage(systemName: "bag")) { action in
+            print("削除")
+            RealmManager.shared.deleteItem(item: self.todoList[index])
         }
 
         return UIMenu(title: "Menu", children: [edit, delete])
@@ -114,11 +117,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                        endDate: todoList[indexPath.row].enddate,
                        status: todoList[indexPath.row].status)
 		return cell
-	}
-
-	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-				   forRowAt indexPath: IndexPath) {
-		deleteTodoItem(at: indexPath.row)
 	}
 
     // ToDoのステータス状態を変更するメソッド

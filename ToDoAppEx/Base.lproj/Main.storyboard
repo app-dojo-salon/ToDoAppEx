@@ -140,6 +140,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="2ZF-TH-hQY" id="oTC-0z-Jzt"/>
                         <outlet property="categoryTextField" destination="xzP-DY-4vV" id="XZe-qZ-Ilp"/>
                         <outlet property="endDateTime" destination="rzz-uF-xuG" id="81W-Ll-4Yf"/>
                         <outlet property="startDateTime" destination="NdB-MM-xel" id="u11-P3-KHt"/>

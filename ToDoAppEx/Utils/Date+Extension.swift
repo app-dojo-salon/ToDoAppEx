@@ -32,7 +32,6 @@ extension Date {
         return formatter.string(from: self)
     }
 
-
     /// 日付と引数の日付を比較して判定するメソッド
     /// - Parameter targetDay: 日付の比較対象
     /// - Returns: 比較対象の日付より前または同じ→true、比較対象より後→false

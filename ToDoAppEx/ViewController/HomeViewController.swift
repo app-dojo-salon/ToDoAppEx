@@ -41,6 +41,38 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController {
+    /// 吹き出しメニューを作成する
+    private func makeContextMenu(index: Int) -> UIMenu {
+        let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
+            print("編集")
+            let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+            editVC.configure(type: .edit(index: index))
+            self.present(editVC, animated: true, completion: nil)
+        }
+
+        let delete = UIAction(title: "削除", image: UIImage(systemName: "bag")) { action in
+            print("削除")
+            self.deleteServerData(index: index)
+            RealmManager.shared.deleteItem(item: self.todoList[index])
+        }
+
+        return UIMenu(title: "Menu", children: [edit, delete])
+    }
+
+    private func deleteServerData(index: Int) {
+        let targetItem = todoList[index]
+        let serverRequest: ServerRequest = ServerRequest()
+
+        serverRequest.sendServerRequest(
+            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/delete_item",
+            params: [
+                "itemid": targetItem.itemid,
+                "accountname": targetItem.accountname,
+            ],
+            completion: { (data: Data) -> Void in }
+        )
+    }
+
     private func setTodoListConfig() {
         todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
         token = todoList.observe { [weak self] _ in
@@ -78,6 +110,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 		return todoList.count
 	}
 
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        let index = indexPath.row
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: { suggestedActions in
+            return self.makeContextMenu(index: index)
+        })
+    }
+
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "todoItem", for: indexPath) as! ImageCell
@@ -89,11 +132,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                        endDate: todoList[indexPath.row].enddate,
                        status: todoList[indexPath.row].status)
 		return cell
-	}
-
-	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-				   forRowAt indexPath: IndexPath) {
-		deleteTodoItem(at: indexPath.row)
 	}
 
     // ToDoのステータス状態を変更するメソッド

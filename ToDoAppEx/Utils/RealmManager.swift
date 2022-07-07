@@ -67,7 +67,7 @@ final class RealmManager {
         }
     }
 
-    /// ToDoItemの項目を修正する
+    /// ToDoItemのステータスを修正する
     ///
     /// 独自の書き込みが必要になるため専用で置く
     func changeStatusToDoItem<T>(type: T.Type, index: Int) where T: TodoItem {
@@ -79,6 +79,22 @@ final class RealmManager {
             }
         } catch {
             print("ステータスの変更に失敗しました")
+        }
+    }
+
+    /// ToDoItemの内容を編集する
+    func editToDoItem(item: ItemData, index: Int) {
+        let list = getItemInRealm(type: TodoItem.self)
+
+        do {
+            try realm.write {
+                list[index].title = item.title
+                list[index].category = item.category
+                list[index].startdate = item.startDate
+                list[index].enddate = item.endDate
+            }
+        } catch {
+            print("アイテムの編集に失敗しました")
         }
     }
 }

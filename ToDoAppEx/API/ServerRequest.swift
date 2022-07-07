@@ -16,6 +16,7 @@ class ServerRequest {
             request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
             let task:URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data,response,error) -> Void in
                 if error == nil {
+                    print("server response: \(String(describing: response))")
                     completion(data!)
                 } else {
                     print("server error:\(String(describing:error))")

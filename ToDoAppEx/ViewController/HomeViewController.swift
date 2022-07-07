@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     /// 吹き出しメニューを作成する
-    func makeContextMenu(index: Int) -> UIMenu {
+    private func makeContextMenu(index: Int) -> UIMenu {
         let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
             print("編集")
             let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
@@ -52,10 +52,25 @@ extension HomeViewController {
 
         let delete = UIAction(title: "削除", image: UIImage(systemName: "bag")) { action in
             print("削除")
+            self.deleteServerData(index: index)
             RealmManager.shared.deleteItem(item: self.todoList[index])
         }
 
         return UIMenu(title: "Menu", children: [edit, delete])
+    }
+
+    private func deleteServerData(index: Int) {
+        let targetItem = todoList[index]
+        let serverRequest: ServerRequest = ServerRequest()
+
+        serverRequest.sendServerRequest(
+            urlString: "http://tk2-235-27465.vs.sakura.ne.jp/delete_item",
+            params: [
+                "itemid": targetItem.itemid,
+                "accountname": targetItem.accountname,
+            ],
+            completion: { (data: Data) -> Void in }
+        )
     }
 
     private func setTodoListConfig() {

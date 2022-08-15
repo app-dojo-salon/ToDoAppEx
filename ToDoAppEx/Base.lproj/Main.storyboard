@@ -424,8 +424,30 @@
                     <view key="view" contentMode="scaleToFill" id="EKs-56-T5u">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xq2-wc-fjW">
+                                <rect key="frame" x="0.0" y="93" width="390" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ldr-BS-AFe"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fcG-Zk-y7b">
+                                <rect key="frame" x="0.0" y="148" width="390" height="613"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XrZ-ms-aYk"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xq2-wc-fjW" firstAttribute="trailing" secondItem="XrZ-ms-aYk" secondAttribute="trailing" id="233-Bn-PtB"/>
+                            <constraint firstItem="fcG-Zk-y7b" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="B6K-0q-yv3"/>
+                            <constraint firstItem="xq2-wc-fjW" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="LdY-bJ-fbe"/>
+                            <constraint firstItem="XrZ-ms-aYk" firstAttribute="trailing" secondItem="fcG-Zk-y7b" secondAttribute="trailing" id="cLM-jD-aHc"/>
+                            <constraint firstItem="XrZ-ms-aYk" firstAttribute="bottom" secondItem="fcG-Zk-y7b" secondAttribute="bottom" id="dMq-bM-0eL"/>
+                            <constraint firstItem="fcG-Zk-y7b" firstAttribute="top" secondItem="xq2-wc-fjW" secondAttribute="bottom" constant="5" id="kee-Rz-Mlp"/>
+                            <constraint firstItem="xq2-wc-fjW" firstAttribute="top" secondItem="XrZ-ms-aYk" secondAttribute="top" constant="5" id="nG2-j7-7U2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="S8T-II-nY2">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="cloud" catalog="system" id="sEz-ds-nV0"/>
@@ -863,9 +885,6 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

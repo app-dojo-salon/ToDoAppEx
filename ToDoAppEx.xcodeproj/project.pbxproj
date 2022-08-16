@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84342FDA46B03BB410F7DD02 /* Pods_ToDoAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */; };
 		9B9012757307C49A4E96D15A /* Pods_ToDoAppEx_ToDoAppExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD0896660E6E0BD1A1F8FA7 /* Pods_ToDoAppEx_ToDoAppExUITests.framework */; };
+		9F33584928AA406F003A5263 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F33584828AA406F003A5263 /* ImageCell.xib */; };
 		9F5F499326058303000C2E0A /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F499226058303000C2E0A /* TodoItem.swift */; };
 		9F5F49BC26094FAA000C2E0A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F49BB26094FAA000C2E0A /* ImageCell.swift */; };
 		9F6384C126460B93001DFEBD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6384C026460B93001DFEBD /* CustomView.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8C201AAE2FAC4C3E510521 /* Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx-ToDoAppExUITests/Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F33584828AA406F003A5263 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		9F5F499226058303000C2E0A /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		9F5F49BB26094FAA000C2E0A /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		9F6384C026460B93001DFEBD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		9FA2207F27ADE90300CFD239 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9F33584828AA406F003A5263 /* ImageCell.xib */,
 				9F5F49BB26094FAA000C2E0A /* ImageCell.swift */,
 				9F6384C526460BCA001DFEBD /* CustomView.xib */,
 				9F6384C026460B93001DFEBD /* CustomView.swift */,
@@ -379,6 +382,7 @@
 				F48F3AE225F3D8EA001E5342 /* LaunchScreen.storyboard in Resources */,
 				9F6384C626460BCA001DFEBD /* CustomView.xib in Resources */,
 				F48F3ADF25F3D8EA001E5342 /* Assets.xcassets in Resources */,
+				9F33584928AA406F003A5263 /* ImageCell.xib in Resources */,
 				F48F3ADD25F3D8E8001E5342 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

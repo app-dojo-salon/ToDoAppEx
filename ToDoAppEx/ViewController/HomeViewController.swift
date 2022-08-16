@@ -84,6 +84,8 @@ extension HomeViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
+        tableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
+
         // セルの高さを固定
         tableView.estimatedRowHeight = 100
         // 区切り線を左端まで伸ばす
@@ -123,7 +125,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "todoItem", for: indexPath) as! ImageCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageCell
 		// カスタムセルにRealmの情報を反映
 		cell.configure(image: todoList[indexPath.row].image,
 					   title: todoList[indexPath.row].title,

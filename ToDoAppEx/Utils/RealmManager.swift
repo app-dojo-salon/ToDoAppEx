@@ -67,11 +67,26 @@ final class RealmManager {
         }
     }
 
+    private func searchIndex(uuid: String, list: Results<TodoItem>) -> Int? {
+        var index = 0
+        for item in list {
+            if item.itemid == uuid {
+                return index
+            }
+            index = index + 1
+        }
+        return nil
+    }
+
     /// ToDoItemのステータスを修正する
     ///
     /// 独自の書き込みが必要になるため専用で置く
-    func changeStatusToDoItem<T>(type: T.Type, index: Int) where T: TodoItem {
+    func changeStatusToDoItem<T>(type: T.Type, uuid: String) where T: TodoItem {
         let list = getItemInRealm(type: type.self)
+        guard let index = searchIndex(uuid: uuid, list: list as! Results<TodoItem>) else {
+            print("ステータスの変更に失敗しました")
+            return
+        }
 
         do {
             try realm.write {

@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     // 現在表示される内容となるリスト
     private var todoList: Results<TodoItem>!
     private var token: NotificationToken?
+    private var displayList: [TodoItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,7 @@ extension SearchViewController {
     }
 
     private func changeStatusToDoItem(index: Int) {
-        RealmManager.shared.changeStatusToDoItem(type: TodoItem.self, index: index)
+        RealmManager.shared.changeStatusToDoItem(type: TodoItem.self, uuid: displayList[index].itemid)
         reload()
     }
 }

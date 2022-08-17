@@ -98,7 +98,7 @@ extension HomeViewController {
     }
 
     private func changeStatusToDoItem(index: Int) {
-        RealmManager.shared.changeStatusToDoItem(type: TodoItem.self, index: index)
+        RealmManager.shared.changeStatusToDoItem(type: TodoItem.self, uuid: todoList[index].itemid)
         reload()
     }
 

@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     // 検索結果を表示するtableView
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     // 現在表示される内容となるリスト
     private var todoList: Results<TodoItem>!
     private var token: NotificationToken?
@@ -20,6 +21,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.tintColor = UIColor.clear
+
+        searchBar.delegate = self
 
         // 現在登録されているタスクの一覧を取得
         setTodoListConfig()
@@ -38,8 +41,9 @@ class SearchViewController: UIViewController {
 extension SearchViewController {
     private func setTodoListConfig() {
         todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
+        reload()
         token = todoList.observe { [weak self] _ in
-          self?.reload()
+            self?.reload()
         }
     }
 
@@ -57,6 +61,10 @@ extension SearchViewController {
     }
 
     private func reload() {
+        displayList = []
+        for item in todoList {
+            displayList.append(item)
+        }
         tableView.reloadData()
     }
 
@@ -66,23 +74,41 @@ extension SearchViewController {
     }
 }
 
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        var filterdArr: [TodoItem] = []
+        if let text = searchBar.text {
+            if text == "" {
+                // 検索窓に入力がない場合にはreloadしてタスクを全て表示する
+                reload()
+            } else {
+                for item in todoList {
+                    if item.title.contains(text) {
+                        filterdArr.append(item)
+                    }
+                }
+                displayList = filterdArr
+                tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoList.count
+        return displayList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageCell
         // カスタムセルにRealmの情報を反映
-        cell.configure(image: todoList[indexPath.row].image,
-                       title: todoList[indexPath.row].title,
-                       category: todoList[indexPath.row].category,
-                       startDate: todoList[indexPath.row].startdate,
-                       endDate: todoList[indexPath.row].enddate,
-                       status: todoList[indexPath.row].status)
+        cell.configure(image: displayList[indexPath.row].image,
+                       title: displayList[indexPath.row].title,
+                       category: displayList[indexPath.row].category,
+                       startDate: displayList[indexPath.row].startdate,
+                       endDate: displayList[indexPath.row].enddate,
+                       status: displayList[indexPath.row].status)
         return cell
     }
 

@@ -453,6 +453,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="cloud" catalog="system" id="sEz-ds-nV0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="xq2-wc-fjW" id="Zr5-Cw-OJs"/>
                         <outlet property="shareButton" destination="sEz-ds-nV0" id="Akl-kI-1wb"/>
                         <outlet property="tableView" destination="fcG-Zk-y7b" id="QVA-qD-mMv"/>
                     </connections>

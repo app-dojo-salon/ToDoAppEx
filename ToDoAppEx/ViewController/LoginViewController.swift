@@ -42,7 +42,8 @@ class LoginViewController: UIViewController {
                         item.itemid = (doc as! NSDictionary)["itemid"] as! String
                         print(item.itemid)
                         item.accountname = (doc as! NSDictionary)["accountname"] as! String
-                        
+                        item.userid = (doc as! NSDictionary)["userid"] as! String
+
                         var existFlag = false
                         for todoitem in todoItems {
                             if todoitem.itemid == item.itemid && todoitem.accountname == item.accountname {
@@ -63,22 +64,6 @@ class LoginViewController: UIViewController {
                         }
                     }
                     
-                    let allContents: Results<User> = realm.objects(User.self)
-
-                    if allContents.count >= 1 {
-                        try! realm.write {
-                            allContents[0].accountname = self.email.text!
-                            allContents[0].password = self.password.text!
-                            print("ユーザーの上書き：\(allContents[0])")
-                        }
-                    } else {
-                        let user = User()
-                        user.accountname = self.email.text!
-                        user.password = self.password.text!
-                        try! realm.write {
-                            realm.add(user)
-                        }
-                    }
                     self.userDefaults.set(true, forKey: "login")
                     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
                     secondViewController.modalPresentationStyle = .fullScreen

@@ -36,6 +36,7 @@
 		F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3B1725F447D8001E5342 /* SearchViewController.swift */; };
 		F492B7A5263BC62800E2F11D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492B7A4263BC62800E2F11D /* TabBarController.swift */; };
 		F4C6A3482744013B007E60F2 /* ShareAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */; };
+		F4E7B07428D5BDAD008E0A92 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7B07328D5BDAD008E0A92 /* SettingCell.swift */; };
 		F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */; };
 		F4FC931A277CF43B001B9A36 /* ShareTodoItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */; };
 		F4FC931C277D04F2001B9A36 /* ShareTodoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */; };
@@ -98,6 +99,7 @@
 		F48F3B1725F447D8001E5342 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F492B7A4263BC62800E2F11D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAccountCell.swift; sourceTree = "<group>"; };
+		F4E7B07328D5BDAD008E0A92 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskPasswordSettingViewController.swift; sourceTree = "<group>"; };
 		F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTodoItemListViewController.swift; sourceTree = "<group>"; };
 		F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTodoItemCell.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				F4FC931B277D04F2001B9A36 /* ShareTodoItemCell.swift */,
 				F4C6A3472744013B007E60F2 /* ShareAccountCell.swift */,
 				F492B7A4263BC62800E2F11D /* TabBarController.swift */,
+				F4E7B07328D5BDAD008E0A92 /* SettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				F48F3B0925F447A3001E5342 /* EditViewController.swift in Sources */,
 				F421746626ABAC2500B133F1 /* Date+Extension.swift in Sources */,
 				9F9647E128756EF100B7244E /* String+Extension.swift in Sources */,
+				F4E7B07428D5BDAD008E0A92 /* SettingCell.swift in Sources */,
 				F44C387E26A67C8400D41ED7 /* User.swift in Sources */,
 				F48F3ADA25F3D8E8001E5342 /* HomeViewController.swift in Sources */,
 				F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */,

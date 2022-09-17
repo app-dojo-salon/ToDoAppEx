@@ -67,7 +67,7 @@ extension HomeViewController {
             urlString: "http://tk2-235-27465.vs.sakura.ne.jp/delete_item",
             params: [
                 "itemid": targetItem.itemid,
-                "accountname": targetItem.accountname,
+                "userid": targetItem.userid,
             ],
             completion: { (data: Data) -> Void in }
         )
@@ -109,7 +109,11 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return todoList.count
+        if todoList == nil {
+            return 0
+        } else {
+            return todoList.count
+        }
 	}
 
     func tableView(_ tableView: UITableView,

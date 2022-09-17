@@ -69,6 +69,7 @@ class EditViewController: UIViewController {
         toDo.itemid = uuid.uuidString
         // FIXME: アカウントは仮でyoshikiの固定値
         toDo.accountname = users[0].accountname
+        toDo.userid = users[0].userid
         // FIXME: 現状は画像の種類が一枚なので固定値
         toDo.image = "check"
         toDo.title = title
@@ -95,6 +96,7 @@ class EditViewController: UIViewController {
                 params: [
                     "itemid": toDo.itemid,
                     "accountname": toDo.accountname,
+                    "userid": toDo.userid,
                     "title": toDo.title,
                     "category": toDo.category,
                     "startdate": toDo.startdate,
@@ -116,6 +118,7 @@ class EditViewController: UIViewController {
                 params: [
                     "itemid": targetItem.itemid,
                     "accountname": targetItem.accountname,
+                    "userid": targetItem.userid,
                     "title": targetItem.title,
                     "category": targetItem.category,
                     "startdate": targetItem.startdate,

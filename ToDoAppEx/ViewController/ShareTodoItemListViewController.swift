@@ -14,6 +14,7 @@ class ShareTodoItemListViewController: UIViewController {
     @IBOutlet weak var shareAccountLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     var account: String!
+    var userid: String!
     var shareTodoItems: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class ShareTodoItemListViewController: UIViewController {
         serverRequest.sendServerRequest(
             urlString: "http://tk2-235-27465.vs.sakura.ne.jp/getShareTodoItemList",
             params: [
-                "email": self.account!
+                "userid": self.userid!
             ],
             completion: self.getShareTodoItemList(data:))
 
@@ -61,8 +62,9 @@ class ShareTodoItemListViewController: UIViewController {
 
     }
 
-    func configure(shareAccount: String) {
+    func configure(shareAccount: String, id: String) {
         account = shareAccount
+        userid = id
     }
     @IBAction func tappedSendButton(_ sender: Any) {
         if passwordTextField.text != "" {
@@ -70,7 +72,7 @@ class ShareTodoItemListViewController: UIViewController {
             serverRequest.sendServerRequest(
                 urlString: "http://tk2-235-27465.vs.sakura.ne.jp/getShareTodoItemListWithPassword",
                 params: [
-                    "email": self.account!,
+                    "userid": self.userid!,
                     "sharepassword": self.passwordTextField.text!
                 ],
                 completion: self.getShareTodoItemList(data:))

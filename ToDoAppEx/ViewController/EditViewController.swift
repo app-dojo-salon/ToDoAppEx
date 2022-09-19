@@ -64,7 +64,7 @@ class EditViewController: UIViewController {
 
     func createToDoItem(title: String, category: String) -> TodoItem {
         let toDo = TodoItem()
-        let users = RealmManager.shared.getItemInRealm(type: User.self)
+        let users = try! Realm().objects(User.self)
         let uuid = UUID()
         toDo.itemid = uuid.uuidString
         // FIXME: アカウントは仮でyoshikiの固定値

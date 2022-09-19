@@ -59,7 +59,8 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let user = RealmManager.shared.getItemInRealm(type: User.self)
+        
+        let user = try! Realm().objects(User.self) //RealmManager.shared.getItemInRealm(type: User.self)
         contentNameArray[SystemName.accountName] = user[0].accountname
         contentNameArray[SystemName.password] = user[0].password
         contentNameArray[SystemName.email] = user[0].email

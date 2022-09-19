@@ -32,8 +32,10 @@ class AskPasswordSettingViewController: UIViewController {
             serverRequest.sendServerRequest(
                 urlString: "http://tk2-235-27465.vs.sakura.ne.jp/update_account",
                 params: [
-                    "accountname": allContents[0].accountname,
+                    "userid": allContents[0].userid,
                     "password": allContents[0].password,
+                    "email": allContents[0].email,
+                    "accountname": allContents[0].accountname,
                     "publicprivate": true,
                     "sharepassword": passwordTextField.text!
                 ],
@@ -51,8 +53,10 @@ class AskPasswordSettingViewController: UIViewController {
         serverRequest.sendServerRequest(
             urlString: "http://tk2-235-27465.vs.sakura.ne.jp/update_account",
             params: [
-                "accountname": allContents[0].accountname,
+                "userid": allContents[0].userid,
                 "password": allContents[0].password,
+                "email": allContents[0].email,
+                "accountname": allContents[0].accountname,
                 "publicprivate": true,
                 "sharepassword": ""
             ],

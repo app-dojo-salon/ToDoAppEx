@@ -36,13 +36,22 @@ class LoginViewController: UIViewController {
                     let todoItems: Results<TodoItem> = realm.objects(TodoItem.self)
 
                     let docs : NSArray = (json as! NSDictionary)["docs"] as! NSArray
+                    let account : NSDictionary = (json as! NSDictionary)["account"] as! NSDictionary
+                    let user = User()
+                    user.userid = account["userid"] as! String
+                    user.accountname = account["accountname"] as! String
+                    user.password = self.password.text!
+                    user.email = self.email.text!
+                    RealmManager.shared.writeItem(user)
+
                     print(docs)
                     for doc in docs {
                         let item = TodoItem()
                         item.itemid = (doc as! NSDictionary)["itemid"] as! String
                         print(item.itemid)
                         item.accountname = (doc as! NSDictionary)["accountname"] as! String
-                        
+                        item.userid = (doc as! NSDictionary)["userid"] as! String
+
                         var existFlag = false
                         for todoitem in todoItems {
                             if todoitem.itemid == item.itemid && todoitem.accountname == item.accountname {
@@ -63,22 +72,6 @@ class LoginViewController: UIViewController {
                         }
                     }
                     
-                    let allContents: Results<User> = realm.objects(User.self)
-
-                    if allContents.count >= 1 {
-                        try! realm.write {
-                            allContents[0].accountname = self.email.text!
-                            allContents[0].password = self.password.text!
-                            print("ユーザーの上書き：\(allContents[0])")
-                        }
-                    } else {
-                        let user = User()
-                        user.accountname = self.email.text!
-                        user.password = self.password.text!
-                        try! realm.write {
-                            realm.add(user)
-                        }
-                    }
                     self.userDefaults.set(true, forKey: "login")
                     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
                     secondViewController.modalPresentationStyle = .fullScreen

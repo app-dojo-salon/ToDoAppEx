@@ -11,6 +11,7 @@ import RealmSwift
 class TodoItem: Object {
     @objc dynamic var itemid = ""
     @objc dynamic var accountname = ""
+    @objc dynamic var userid = ""
     @objc dynamic var title = ""
 	@objc dynamic var image = ""
     @objc dynamic var category = ""

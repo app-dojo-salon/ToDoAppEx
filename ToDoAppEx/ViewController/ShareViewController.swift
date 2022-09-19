@@ -15,6 +15,7 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var shareAccounts: [String] = []
+    private var shareUserIds: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.tintColor = UIColor.clear
@@ -43,6 +44,7 @@ class ShareViewController: UIViewController {
                     if _doc["publicprivate"] != nil,
                        _doc["publicprivate"] as! Bool {
                         self.shareAccounts.append((doc as! NSDictionary)["accountname"] as! String)
+                        self.shareUserIds.append((doc as! NSDictionary)["_id"] as! String)
                     }
                 }                
             }
@@ -79,7 +81,7 @@ extension ShareViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "ShareTodoItemListViewController") as! ShareTodoItemListViewController
-        nextVC.configure(shareAccount: shareAccounts[indexPath.row])
+        nextVC.configure(shareAccount: shareAccounts[indexPath.row], id: shareUserIds[indexPath.row])
         self.present(nextVC, animated: true, completion: nil)
     }
 }

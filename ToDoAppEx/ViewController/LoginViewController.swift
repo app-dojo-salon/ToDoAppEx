@@ -36,6 +36,14 @@ class LoginViewController: UIViewController {
                     let todoItems: Results<TodoItem> = realm.objects(TodoItem.self)
 
                     let docs : NSArray = (json as! NSDictionary)["docs"] as! NSArray
+                    let account : NSDictionary = (json as! NSDictionary)["account"] as! NSDictionary
+                    let user = User()
+                    user.userid = account["userid"] as! String
+                    user.accountname = account["accountname"] as! String
+                    user.password = self.password.text!
+                    user.email = self.email.text!
+                    RealmManager.shared.writeItem(user)
+
                     print(docs)
                     for doc in docs {
                         let item = TodoItem()

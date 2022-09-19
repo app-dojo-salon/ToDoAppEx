@@ -9,12 +9,12 @@ import UIKit
 
 class SettingCell: UITableViewCell {
 
-    @IBOutlet weak var contentNameLabel: UILabel!
+    @IBOutlet weak var contentNameTextField: UITextField!
     @IBOutlet weak var systemNameLabel: UILabel!
     
     func configure(systemName: String, contentName: String) {
         systemNameLabel.text = systemName
-        contentNameLabel.text = contentName
+        contentNameTextField.text = contentName
     }
     
 }

@@ -15,11 +15,13 @@ class SettingViewController: UIViewController {
         case accountName = 1
         case password = 2
         case email = 3
-        case appliInfo = 4
-        case version = 5
-        case licence = 6
-        case explain = 7
-        case logout = 8
+        case userInfoEditButton = 4
+        case appliInfo = 5
+        case version = 6
+        case licence = 7
+        case explain = 8
+        case logout = 9
+        case logoutButton = 10
     }
 
     var systemNameArray: [SystemName: String] = [
@@ -27,11 +29,13 @@ class SettingViewController: UIViewController {
         SystemName.accountName: "ユーザー名",
         SystemName.password: "パスワード",
         SystemName.email: "メールアドレス",
+        SystemName.userInfoEditButton: "ユーザー情報変更",
         SystemName.appliInfo: "アプリ情報",
         SystemName.version: "バージョン",
         SystemName.licence: "ライセンス",
         SystemName.explain: "アプリ説明",
-        SystemName.logout: "ステータス"
+        SystemName.logout: "ステータス",
+        SystemName.logoutButton: "ログアウト"
     ]
     
     var contentNameArray: [SystemName: String] = [
@@ -39,11 +43,13 @@ class SettingViewController: UIViewController {
         SystemName.accountName: "",
         SystemName.password: "",
         SystemName.email: "",
+        SystemName.userInfoEditButton: "",
         SystemName.appliInfo: "",
         SystemName.version: "1.0.0",
         SystemName.licence: "app-dojo-salon nao yoshiki",
         SystemName.explain: "サイトへのリンク",
         SystemName.logout: "ログイン状態",
+        SystemName.logoutButton: ""
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -58,6 +64,8 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "SettingTitleCell", bundle: nil), forCellReuseIdentifier: "SettingTitleCell")
+        tableView.register(UINib(nibName: "SettingButtonCell", bundle: nil), forCellReuseIdentifier: "SettingButtonCell")
+        tableView.register(UINib(nibName: "SettingLabelCell", bundle: nil), forCellReuseIdentifier: "SettingLabelCell")
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets.zero
     }
@@ -73,8 +81,16 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTitleCell", for: indexPath) as! SettingTitleCell
             cell.configure(titleName: systemNameArray[SystemName(rawValue: indexPath.row)!]!)
             return cell
-        } else {
+        } else if indexPath.row == SystemName.userInfoEditButton.rawValue || indexPath.row == SystemName.logoutButton.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingButtonCell", for: indexPath) as! SettingButtonCell
+            cell.configure(buttonName: systemNameArray[SystemName(rawValue: indexPath.row)!]!)
+            return cell
+        } else if indexPath.row == SystemName.accountName.rawValue || indexPath.row == SystemName.email.rawValue || indexPath.row == SystemName.password.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
+            cell.configure(systemName: systemNameArray[SystemName(rawValue: indexPath.row)!]!, contentName: contentNameArray[SystemName(rawValue: indexPath.row)!]!)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.configure(systemName: systemNameArray[SystemName(rawValue: indexPath.row)!]!, contentName: contentNameArray[SystemName(rawValue: indexPath.row)!]!)
             return cell
         }

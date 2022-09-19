@@ -25,6 +25,9 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                        <connections>
+                            <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pjE-eQ-HNY"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

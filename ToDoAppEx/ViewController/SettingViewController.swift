@@ -10,28 +10,40 @@ import RealmSwift
 
 class SettingViewController: UIViewController {
 
-    var systemNameArray = [
-        "ユーザー情報",
-        "ユーザー名",
-        "パスワード",
-        "メールアドレス",
-        "アプリ情報",
-        "バージョン",
-        "ライセンス",
-        "アプリ説明",
-        "ログアウト",
+    enum SystemName: Int {
+        case userInfo = 0
+        case accountName = 1
+        case password = 2
+        case email = 3
+        case appliInfo = 4
+        case version = 5
+        case licence = 6
+        case explain = 7
+        case logout = 8
+    }
 
+    var systemNameArray: [SystemName: String] = [
+        SystemName.userInfo: "ユーザー情報",
+        SystemName.accountName: "ユーザー名",
+        SystemName.password: "パスワード",
+        SystemName.email: "メールアドレス",
+        SystemName.appliInfo: "アプリ情報",
+        SystemName.version: "バージョン",
+        SystemName.licence: "ライセンス",
+        SystemName.explain: "アプリ説明",
+        SystemName.logout: "ステータス"
     ]
-    var contentNameArray = [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "1.0.0",
-        "app-dojo-salon nao yoshiki",
-        "サイトへのリンク",
-        "ログイン状態",
+    
+    var contentNameArray: [SystemName: String] = [
+        SystemName.userInfo: "",
+        SystemName.accountName: "",
+        SystemName.password: "",
+        SystemName.email: "",
+        SystemName.appliInfo: "",
+        SystemName.version: "1.0.0",
+        SystemName.licence: "app-dojo-salon nao yoshiki",
+        SystemName.explain: "サイトへのリンク",
+        SystemName.logout: "ログイン状態",
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,9 +51,9 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
 
         let user = RealmManager.shared.getItemInRealm(type: User.self)
-        contentNameArray[1] = user[0].accountname
-        contentNameArray[2] = user[0].password
-        contentNameArray[3] = user[0].email
+        contentNameArray[SystemName.accountName] = user[0].accountname
+        contentNameArray[SystemName.password] = user[0].password
+        contentNameArray[SystemName.email] = user[0].email
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -57,13 +69,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 || indexPath.row == 4 {
+        if indexPath.row == SystemName.userInfo.rawValue || indexPath.row == SystemName.appliInfo.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTitleCell", for: indexPath) as! SettingTitleCell
-            cell.configure(titleName: systemNameArray[indexPath.row])
+            cell.configure(titleName: systemNameArray[SystemName(rawValue: indexPath.row)!]!)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
-            cell.configure(systemName: systemNameArray[indexPath.row], contentName: contentNameArray[indexPath.row])
+            cell.configure(systemName: systemNameArray[SystemName(rawValue: indexPath.row)!]!, contentName: contentNameArray[SystemName(rawValue: indexPath.row)!]!)
             return cell
         }
     }

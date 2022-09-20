@@ -716,30 +716,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" id="bat-I6-yUc">
-                                                    <rect key="frame" x="0.0" y="-1" width="390" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="0.0" y="5" width="385" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xz-5i-K3R">
-                                                            <rect key="frame" x="0.0" y="11.999999999999998" width="140" height="20.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="6.9999999999999982" width="140" height="20.333333333333329"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="140" id="d4c-jc-TsH"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="d4c-jc-TsH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQx-6U-al0">
-                                                            <rect key="frame" x="140" y="11.999999999999998" width="250" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3S4-xo-UEq">
+                                                            <rect key="frame" x="140" y="0.0" width="245" height="34"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="245" id="sFL-AU-rYM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentNameLabel" destination="pQx-6U-al0" id="hH5-R2-V4Y"/>
+                                            <outlet property="contentNameTextField" destination="3S4-xo-UEq" id="kD5-Om-gb2"/>
                                             <outlet property="systemNameLabel" destination="7xz-5i-K3R" id="gKl-sw-k5c"/>
                                         </connections>
                                     </tableViewCell>

@@ -64,7 +64,7 @@ class EditViewController: UIViewController {
 
     func createToDoItem(title: String, category: String) -> TodoItem {
         let toDo = TodoItem()
-        let users = RealmManager.shared.getItemInRealm(type: User.self)
+        let users = try! Realm().objects(User.self)
         let uuid = UUID()
         toDo.itemid = uuid.uuidString
         // FIXME: アカウントは仮でyoshikiの固定値
@@ -88,7 +88,14 @@ class EditViewController: UIViewController {
         switch type {
         case .create:
             let toDo = createToDoItem(title: newTitle, category: newCategory)
-            RealmManager.shared.writeItem(toDo)
+            let realm = try! Realm()
+            do {
+                try realm.write {
+                    realm.add(toDo)
+                }
+            } catch {
+                print("アイテム書き込み失敗")
+            }
             let serverRequest: ServerRequest = ServerRequest()
 
             serverRequest.sendServerRequest(

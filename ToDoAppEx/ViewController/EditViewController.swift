@@ -88,7 +88,14 @@ class EditViewController: UIViewController {
         switch type {
         case .create:
             let toDo = createToDoItem(title: newTitle, category: newCategory)
-            RealmManager.shared.writeItem(toDo)
+            let realm = try! Realm()
+            do {
+                try realm.write {
+                    realm.add(toDo)
+                }
+            } catch {
+                print("アイテム書き込み失敗")
+            }
             let serverRequest: ServerRequest = ServerRequest()
 
             serverRequest.sendServerRequest(

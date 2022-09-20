@@ -52,20 +52,6 @@ class SettingViewController: UIViewController {
         }
 
     }
-
-//    var systemNameArray: [SystemName: String] = [
-//        SystemName.userInfo: "ユーザー情報",
-//        SystemName.accountName: "ユーザー名",
-//        SystemName.password: "パスワード",
-//        SystemName.email: "メールアドレス",
-//        SystemName.userInfoEditButton: "ユーザー情報変更",
-//        SystemName.appliInfo: "アプリ情報",
-//        SystemName.version: "バージョン",
-//        SystemName.licence: "ライセンス",
-//        SystemName.explain: "アプリ説明",
-//        SystemName.logout: "ステータス",
-//        SystemName.logoutButton: "ログアウト"
-//    ]
     
     var contentNameArray: [SystemName: String] = [
         SystemName.userInfo: "",

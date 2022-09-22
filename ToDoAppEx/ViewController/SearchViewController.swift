@@ -13,10 +13,13 @@ class SearchViewController: UIViewController {
     // 検索結果を表示するtableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var categoryTextField: UITextField!
     // 現在表示される内容となるリスト
     private var todoList: Results<TodoItem>!
     private var token: NotificationToken?
     private var displayList: [TodoItem] = []
+    private var categoryList: [String] = []
+    private var selectedCategory: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class SearchViewController: UIViewController {
         // 現在登録されているタスクの一覧を取得
         setTodoListConfig()
 
+        // カテゴリーリストの一覧を取得
+        setCategoryList()
+
         // TableViewの設定メソッド
         setTableViewConfig()
     }
@@ -35,6 +41,10 @@ class SearchViewController: UIViewController {
         if let token = self.token {
             token.invalidate()
         }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
@@ -45,6 +55,22 @@ extension SearchViewController {
         token = todoList.observe { [weak self] _ in
             self?.reload()
         }
+    }
+
+    private func setCategoryList() {
+        // categoryPickerViewを設定
+        let categoryPickerView = UIPickerView()
+        categoryPickerView.delegate = self
+        categoryPickerView.dataSource = self
+
+        categoryTextField.inputView = categoryPickerView
+
+        var _categoryList: [String] = []
+        for item in todoList {
+            // カテゴリーリストの中身
+            _categoryList.append(item.category)
+        }
+        categoryList = _categoryList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
     }
 
     private func setTableViewConfig() {
@@ -115,5 +141,41 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     // ToDoのステータス状態を変更するメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeStatusToDoItem(index: indexPath.row)
+    }
+}
+
+extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    // UIPickerViewの列の数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    // UIPickerViewの行数、要素の全数
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return categoryList.count
+    }
+
+    // UIPickerViewに表示する配列
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        return categoryList[row]
+    }
+
+    // UIPickerViewのRowが選択された時の挙動
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
+        // 処理
+        selectedCategory = categoryList[row]
+        var filterdArr: [TodoItem] = []
+        for item in todoList {
+            if item.category == selectedCategory {
+                filterdArr.append(item)
+            }
+        }
+        displayList = filterdArr
+        tableView.reloadData()
     }
 }

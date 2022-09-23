@@ -10,13 +10,13 @@ import RealmSwift
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    // 検索結果を表示するtableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryTextField: UITextField!
-    // 現在表示される内容となるリスト
+
     private var todoList: Results<TodoItem>!
     private var token: NotificationToken?
+    // 表示される内容となるリスト
     private var displayList: [TodoItem] = []
     private var categoryList: [String] = []
     private var selectedCategory: String = ""
@@ -70,6 +70,7 @@ extension SearchViewController {
             // カテゴリーリストの中身
             _categoryList.append(item.category)
         }
+        // 重複のないリストとして格納
         categoryList = _categoryList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
     }
 

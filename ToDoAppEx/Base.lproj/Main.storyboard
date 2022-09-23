@@ -433,7 +433,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fcG-Zk-y7b">
-                                <rect key="frame" x="0.0" y="188" width="390" height="573"/>
+                                <rect key="frame" x="0.0" y="288" width="390" height="473"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="カテゴリ選択" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ua-GF-3wo">
@@ -444,20 +444,69 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-as-iQU">
+                                <rect key="frame" x="0.0" y="183" width="390" height="100"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P7i-9f-2b0">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="101"/>
+                                        <segments>
+                                            <segment title="開始日"/>
+                                            <segment title="完了日"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-jT-TwJ">
+                                        <rect key="frame" x="240" y="0.0" width="150" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iu-HC-D7U">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="ILC-r2-urr">
+                                                <rect key="frame" x="0.0" y="25" width="150" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="2jd-s6-Zud"/>
+                                                </constraints>
+                                                <locale key="locale" localeIdentifier="ja_JP"/>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="〜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xU1-XP-mwg">
+                                                <rect key="frame" x="0.0" y="50" width="150" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2Pa-2Z-ys4">
+                                                <rect key="frame" x="0.0" y="75" width="150" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="wxY-Zc-r1O"/>
+                                                </constraints>
+                                                <locale key="locale" localeIdentifier="ja_JP"/>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="vQk-FE-1f8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XrZ-ms-aYk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xq2-wc-fjW" firstAttribute="trailing" secondItem="XrZ-ms-aYk" secondAttribute="trailing" id="233-Bn-PtB"/>
-                            <constraint firstItem="fcG-Zk-y7b" firstAttribute="top" secondItem="0Ua-GF-3wo" secondAttribute="bottom" constant="10" id="8yW-RX-Snr"/>
                             <constraint firstItem="fcG-Zk-y7b" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="B6K-0q-yv3"/>
+                            <constraint firstItem="eh8-as-iQU" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="BGu-g0-wb2"/>
                             <constraint firstItem="xq2-wc-fjW" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="LdY-bJ-fbe"/>
                             <constraint firstItem="XrZ-ms-aYk" firstAttribute="trailing" secondItem="fcG-Zk-y7b" secondAttribute="trailing" id="cLM-jD-aHc"/>
                             <constraint firstItem="0Ua-GF-3wo" firstAttribute="leading" secondItem="XrZ-ms-aYk" secondAttribute="leading" id="cv0-bS-z5Y"/>
                             <constraint firstItem="XrZ-ms-aYk" firstAttribute="bottom" secondItem="fcG-Zk-y7b" secondAttribute="bottom" id="dMq-bM-0eL"/>
+                            <constraint firstItem="XrZ-ms-aYk" firstAttribute="trailing" secondItem="eh8-as-iQU" secondAttribute="trailing" id="dmL-4Q-dcd"/>
                             <constraint firstItem="0Ua-GF-3wo" firstAttribute="trailing" secondItem="XrZ-ms-aYk" secondAttribute="trailing" id="g1n-CS-LQb"/>
                             <constraint firstItem="xq2-wc-fjW" firstAttribute="top" secondItem="XrZ-ms-aYk" secondAttribute="top" id="nG2-j7-7U2"/>
                             <constraint firstItem="0Ua-GF-3wo" firstAttribute="top" secondItem="xq2-wc-fjW" secondAttribute="bottom" id="pWb-pa-KBn"/>
+                            <constraint firstItem="fcG-Zk-y7b" firstAttribute="top" secondItem="eh8-as-iQU" secondAttribute="bottom" constant="5" id="sfU-4P-eln"/>
+                            <constraint firstItem="eh8-as-iQU" firstAttribute="top" secondItem="0Ua-GF-3wo" secondAttribute="bottom" constant="5" id="xpH-PJ-09R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="S8T-II-nY2">
@@ -829,8 +878,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A6y-tQ-PEy"/>
-        <segue reference="6Pt-Io-gzd"/>
+        <segue reference="5wf-5X-na8"/>
+        <segue reference="4H5-DS-sG8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo-1" width="250" height="174"/>

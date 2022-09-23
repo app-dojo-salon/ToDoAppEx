@@ -513,7 +513,10 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="cloud" catalog="system" id="sEz-ds-nV0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="beginDatePicker" destination="ILC-r2-urr" id="t6K-9d-RI3"/>
                         <outlet property="categoryTextField" destination="0Ua-GF-3wo" id="5PM-wW-mDc"/>
+                        <outlet property="dateTypeSegmentedControl" destination="P7i-9f-2b0" id="p8T-rg-Lhg"/>
+                        <outlet property="endDatePicker" destination="2Pa-2Z-ys4" id="wcc-3I-a4h"/>
                         <outlet property="searchBar" destination="xq2-wc-fjW" id="Zr5-Cw-OJs"/>
                         <outlet property="shareButton" destination="sEz-ds-nV0" id="Akl-kI-1wb"/>
                         <outlet property="tableView" destination="fcG-Zk-y7b" id="QVA-qD-mMv"/>

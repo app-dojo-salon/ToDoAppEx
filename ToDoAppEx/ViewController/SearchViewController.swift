@@ -13,19 +13,38 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var dateTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var beginDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
 
     private var todoList: Results<TodoItem>!
     private var token: NotificationToken?
     // 表示される内容となるリスト
-    private var displayList: [TodoItem] = []
+    private var displayList: [TodoItem] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var categoryList: [String] = []
     private var selectedCategory: String = ""
+    private var isStartDateType: Bool = true {
+        didSet {
+            print("isStartDateTypeが変更")
+            filterDate()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.tintColor = UIColor.clear
 
         searchBar.delegate = self
+
+        dateTypeSegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+
+        beginDatePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+
+        endDatePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
 
         // 現在登録されているタスクの一覧を取得
         setTodoListConfig()
@@ -35,6 +54,18 @@ class SearchViewController: UIViewController {
 
         // TableViewの設定メソッド
         setTableViewConfig()
+    }
+
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            isStartDateType = true
+        } else {
+            isStartDateType = false
+        }
+    }
+
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        filterDate()
     }
 
     deinit {
@@ -53,7 +84,7 @@ extension SearchViewController {
         todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
         reload()
         token = todoList.observe { [weak self] _ in
-            self?.reload()
+            self?.tableView.reloadData()
         }
     }
 
@@ -72,6 +103,24 @@ extension SearchViewController {
         }
         // 重複のないリストとして格納
         categoryList = _categoryList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
+    }
+
+    private func filterDate() {
+        var filterDateList: [TodoItem] = []
+        for item in todoList {
+            if isStartDateType {
+                let startDate = item.startdate.dateFromString(format: "yyyy/MM/dd HH:mm:ss")
+                if startDate.compare(beginDatePicker.date) == .orderedDescending, startDate.compare(endDatePicker.date) == .orderedAscending {
+                    filterDateList.append(item)
+                }
+            } else {
+                let endDate = item.enddate.dateFromString(format: "yyyy/MM/dd HH:mm:ss")
+                if endDate.compare(beginDatePicker.date) == .orderedDescending, endDate.compare(endDatePicker.date) == .orderedAscending  {
+                    filterDateList.append(item)
+                }
+            }
+        }
+        displayList = filterDateList
     }
 
     private func setTableViewConfig() {
@@ -115,7 +164,6 @@ extension SearchViewController: UISearchBarDelegate {
                     }
                 }
                 displayList = filterdArr
-                tableView.reloadData()
             }
         }
     }
@@ -177,6 +225,5 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
         displayList = filterdArr
-        tableView.reloadData()
     }
 }

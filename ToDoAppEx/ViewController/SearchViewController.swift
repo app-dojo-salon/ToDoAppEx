@@ -193,6 +193,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - PickerView
+
 extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     // UIPickerViewの列の数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

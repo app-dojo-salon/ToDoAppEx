@@ -76,7 +76,6 @@ extension HomeViewController {
 
     private func setTodoListConfig() {
         todoList = try! Realm().objects(TodoItem.self)
-//        todoList = RealmManager.shared.getItemInRealm(type: TodoItem.self)
         token = todoList.observe { [weak self] _ in
           self?.reload()
         }

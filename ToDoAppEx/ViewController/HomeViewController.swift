@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
 	}
 }
 
+// MARK: - Private Func
 
 extension HomeViewController {
     /// 吹き出しメニューを作成する

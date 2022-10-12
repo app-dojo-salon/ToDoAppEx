@@ -14,11 +14,11 @@ final class RealmManager {
     // シングルトンとして使用
     public static let shared = RealmManager()
 
-    private var realm: Realm
-
-    private init() {
-        realm = try! Realm()
+    private var realm: Realm {
+        try! Realm()
     }
+
+    private init() {}
 
     /// Realmからデータを取得する
     ///

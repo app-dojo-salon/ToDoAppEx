@@ -144,7 +144,7 @@
                         <outlet property="categoryTextField" destination="xzP-DY-4vV" id="XZe-qZ-Ilp"/>
                         <outlet property="endDateTime" destination="rzz-uF-xuG" id="81W-Ll-4Yf"/>
                         <outlet property="startDateTime" destination="NdB-MM-xel" id="u11-P3-KHt"/>
-                        <outlet property="textField" destination="VZM-lW-ff9" id="7tB-E9-moS"/>
+                        <outlet property="taskNameTextField" destination="VZM-lW-ff9" id="mvf-ko-z2T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbI-TM-ZqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

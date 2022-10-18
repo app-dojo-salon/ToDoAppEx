@@ -24,7 +24,11 @@ class LoginViewController: UIViewController {
             ],
             completion: self.writeModelAndGoToNext(data:))
     }
-    
+
+    @IBAction func tappedCreateAccountButton(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
     private func writeModelAndGoToNext(data: Data?) {
         do {
             var account_scope: NSDictionary?

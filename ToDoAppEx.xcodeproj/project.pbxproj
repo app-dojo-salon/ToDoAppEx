@@ -17,6 +17,7 @@
 		9F9647E128756EF100B7244E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9647E028756EF100B7244E /* String+Extension.swift */; };
 		9FA692BB285B48300066850F /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA692BA285B48300066850F /* RealmManager.swift */; };
 		9FB3A5A1290D54A200B4B849 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB3A5A0290D54A200B4B849 /* SignUpModel.swift */; };
+		9FB3A5A4290E1A7C00B4B849 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB3A5A3290E1A7C00B4B849 /* SignUpViewModel.swift */; };
 		A0FCB734FFBD16DCABD42CFE /* Pods_ToDoAppExTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C4A4A23D159A521BF73F0E /* Pods_ToDoAppExTests.framework */; };
 		F421746426AB9B5000B133F1 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421746326AB9B5000B133F1 /* ServerRequest.swift */; };
 		F421746626ABAC2500B133F1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421746526ABAC2500B133F1 /* Date+Extension.swift */; };
@@ -77,6 +78,7 @@
 		9F9647E028756EF100B7244E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9FA692BA285B48300066850F /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9FB3A5A0290D54A200B4B849 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		9FB3A5A3290E1A7C00B4B849 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A1895C9BD803A6D3D6D5D757 /* Pods-ToDoAppEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx.release.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx/Pods-ToDoAppEx.release.xcconfig"; sourceTree = "<group>"; };
 		B589D8C785E573BB12FBFB59 /* Pods-ToDoAppEx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx/Pods-ToDoAppEx.debug.xcconfig"; sourceTree = "<group>"; };
 		BBD0896660E6E0BD1A1F8FA7 /* Pods_ToDoAppEx_ToDoAppExUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx_ToDoAppExUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +239,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		9FB3A5A2290D581900B4B849 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9FB3A5A3290E1A7C00B4B849 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F48F3AC925F3D8E8001E5342 = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +276,7 @@
 				9FA2208227ADF15500CFD239 /* Utils */,
 				9FA2208027ADE95400CFD239 /* ViewController */,
 				9FA2207F27ADE90300CFD239 /* View */,
+				9FB3A5A2290D581900B4B849 /* ViewModel */,
 				9F5F49912605826E000C2E0A /* Model */,
 				F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */,
 				F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */,
@@ -544,6 +555,7 @@
 				9FB3A5A1290D54A200B4B849 /* SignUpModel.swift in Sources */,
 				F47286092622CC6F002D6F86 /* SignupViewController.swift in Sources */,
 				9F5F49BC26094FAA000C2E0A /* ImageCell.swift in Sources */,
+				9FB3A5A4290E1A7C00B4B849 /* SignUpViewModel.swift in Sources */,
 				F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */,
 				9FA692BB285B48300066850F /* RealmManager.swift in Sources */,
 				F4E7B07F28D8130E008E0A92 /* SettingLabelCell.swift in Sources */,

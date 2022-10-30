@@ -14,6 +14,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var displayName: UITextField!
     let userDefaults = UserDefaults()
+    @IBOutlet weak var validationCheckLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()

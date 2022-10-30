@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SignupViewController: UIViewController {
+class SignUpViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!

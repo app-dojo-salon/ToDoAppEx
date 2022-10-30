@@ -23,7 +23,7 @@
 		F421746626ABAC2500B133F1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421746526ABAC2500B133F1 /* Date+Extension.swift */; };
 		F44C387E26A67C8400D41ED7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C387D26A67C8400D41ED7 /* User.swift */; };
 		F47286042622C4EA002D6F86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47286032622C4EA002D6F86 /* LoginViewController.swift */; };
-		F47286092622CC6F002D6F86 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47286082622CC6F002D6F86 /* SignupViewController.swift */; };
+		F47286092622CC6F002D6F86 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47286082622CC6F002D6F86 /* SignUpViewController.swift */; };
 		F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */; };
 		F48F3AD825F3D8E8001E5342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */; };
 		F48F3ADA25F3D8E8001E5342 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F3AD925F3D8E8001E5342 /* HomeViewController.swift */; };
@@ -88,7 +88,7 @@
 		F421746526ABAC2500B133F1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		F44C387D26A67C8400D41ED7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F47286032622C4EA002D6F86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F47286082622CC6F002D6F86 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F47286082622CC6F002D6F86 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F48F3AD225F3D8E8001E5342 /* ToDoAppEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48F3AD525F3D8E8001E5342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F48F3AD725F3D8E8001E5342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 				F48F3B1225F447C8001E5342 /* ShareViewController.swift */,
 				F48F3B1725F447D8001E5342 /* SearchViewController.swift */,
 				F47286032622C4EA002D6F86 /* LoginViewController.swift */,
-				F47286082622CC6F002D6F86 /* SignupViewController.swift */,
+				F47286082622CC6F002D6F86 /* SignUpViewController.swift */,
 				F4FC9319277CF43B001B9A36 /* ShareTodoItemListViewController.swift */,
 				F4F008F427C571D500B44B80 /* AskPasswordSettingViewController.swift */,
 			);
@@ -553,7 +553,7 @@
 				F4E7B07728D7E2F6008E0A92 /* SettingTitleCell.swift in Sources */,
 				F48F3B1825F447D8001E5342 /* SearchViewController.swift in Sources */,
 				9FB3A5A1290D54A200B4B849 /* SignUpModel.swift in Sources */,
-				F47286092622CC6F002D6F86 /* SignupViewController.swift in Sources */,
+				F47286092622CC6F002D6F86 /* SignUpViewController.swift in Sources */,
 				9F5F49BC26094FAA000C2E0A /* ImageCell.swift in Sources */,
 				9FB3A5A4290E1A7C00B4B849 /* SignUpViewModel.swift in Sources */,
 				F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */,

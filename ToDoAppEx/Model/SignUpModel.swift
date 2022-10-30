@@ -6,3 +6,38 @@
 //
 
 import Foundation
+
+enum Result<T> {
+    case success(T)
+    case failure(Error)
+}
+
+enum SignUpModelError: Error {
+    case invalidMailAddress
+    case differentConfirmPassword
+    case emptyField
+    case other
+}
+
+protocol SignUpModelProtocol {
+    func validate(email: String, password: String,
+                  confirmPassword: String, displayName: String) -> Result<Void>
+}
+
+final class SignUpModel: SignUpModelProtocol {
+    func validate(email: String, password: String,
+                  confirmPassword: String, displayName: String) -> Result<Void> {
+        // いずれかの入力がない場合は全て.emptyFieldを返す
+        guard !email.isEmpty, !password.isEmpty, !confirmPassword.isEmpty, !displayName.isEmpty else {
+            return .failure(SignUpModelError.emptyField)
+        }
+
+        if confirmPassword != password {
+            return .failure(SignUpModelError.differentConfirmPassword)
+        } else if email.contains("@") {
+            return .failure(SignUpModelError.invalidMailAddress)
+        } else {
+            return .success(())
+        }
+    }
+}

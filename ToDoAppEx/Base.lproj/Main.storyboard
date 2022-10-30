@@ -600,10 +600,10 @@
             </objects>
             <point key="canvasLocation" x="-1674" y="106"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="LCY-SW-LzD">
             <objects>
-                <viewController storyboardIdentifier="SignupViewController" id="xix-qy-TEu" customClass="SignupViewController" customModule="ToDoAppEx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" id="xix-qy-TEu" customClass="SignUpViewController" customModule="ToDoAppEx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QRH-vW-UVg">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -38,6 +38,21 @@ final class SignUpViewModel {
             fatalError("Unexpected pattern.")
         }
     }
+
+    func createAccount(email: String?, password: String?, displayName: String?, completion:  @escaping () -> Void) {
+        model.createAccount(email: email, password: password, displayName: displayName) { result in
+            switch result {
+            case .success:
+                completion()
+            case .failure(let error as SignUpModelError):
+                self.notificationCenter.post(name: self.changeText, object: error.errorText)
+                self.notificationCenter.post(name: self.changeColor, object: UIColor.red)
+                self.notificationCenter.post(name: self.activateButton, object: false)
+            case .failure(_):
+                fatalError("Unexpected pattern.")
+            }
+        }
+    }
 }
 
 extension SignUpModelError {
@@ -49,6 +64,10 @@ extension SignUpModelError {
             return "パスワードが一致していません。"
         case .emptyField:
             return "未入力の項目があります。"
+        case .serverError:
+            return "通信でエラーが発生しました。通信環境をお確かめください。"
+        case .jsonDecord:
+            return "処置中に問題が発生しました。"
         case .other:
             return "不明のエラーです。"
         }

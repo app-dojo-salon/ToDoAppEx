@@ -70,7 +70,7 @@ extension HomeViewController {
                 "itemid": targetItem.itemid,
                 "userid": targetItem.userid,
             ],
-            completion: { (data: Data) -> Void in }
+            completion: { (data: Data?) -> Void in }
         )
     }
 

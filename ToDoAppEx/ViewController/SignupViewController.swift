@@ -47,21 +47,9 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction private func createAccount(_ sender: Any) {
-        if password.text != "" && password.text == confirmPassword.text {
-            let serverRequest: ServerRequest = ServerRequest()
-            serverRequest.sendServerRequest(
-                urlString: "http://tk2-235-27465.vs.sakura.ne.jp/insert_account",
-                params: [
-                    "accountname": self.displayName.text ?? "",
-                    "password": self.password.text ?? "",
-                    "email": self.email.text ?? "",
-                    "publicprivate": false,
-                    "sharepassword": ""
-                ],
-                completion: self.goToNext(data:))
-
-        } else {
-            email.text = "error!"
+        viewModel.createAccount(email: email.text, password: password.text, displayName: displayName.text) {
+            // 成功時のみ実行され、エラーの場合にはNotificationCenter経由で通知される
+            self.goToNext()
         }
     }
 
@@ -107,30 +95,13 @@ extension SignUpViewController {
             object: nil)
     }
 
-    private func goToNext(data: Data?) {
-
-        do {
-            let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-            let doc = json as! NSDictionary
-            let user = User()
-            user.userid = doc["_id"] as! String
-            user.accountname = doc["accountname"] as! String
-            user.password = doc["password"] as! String
-            user.email = doc["email"] as! String
-            user.publicprivate = doc["publicprivate"] as! Bool
-            user.sharepassword = doc["sharepassword"] as! String
-            RealmManager.shared.writeItem(user)
-        } catch {
-            print("signup error")
-            return
-        }
+    private func goToNext() {
         DispatchQueue.main.async {
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             secondViewController.modalPresentationStyle = .fullScreen
             self.present(secondViewController, animated: true, completion: nil)
         }
     }
-
 }
 
 // MARK: ViewModel Binding

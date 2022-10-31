@@ -62,22 +62,12 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     private func setUpBinding() {
-        email.addTarget(
-            self,
-            action: #selector(textFieldEditingChanged),
-            for: .editingChanged)
-        password.addTarget(
-            self,
-            action: #selector(textFieldEditingChanged),
-            for: .editingChanged)
-        confirmPassword.addTarget(
-            self,
-            action: #selector(textFieldEditingChanged),
-            for: .editingChanged)
-        displayName.addTarget(
-            self,
-            action: #selector(textFieldEditingChanged),
-            for: .editingChanged)
+        [email, password, confirmPassword, displayName].forEach { $0.addTarget(
+                self,
+                action: #selector(textFieldEditingChanged),
+                for: .editingChanged)
+        }
+
         notificationCenter.addObserver(
             self,
             selector: #selector(updateValidationText),

@@ -47,10 +47,8 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction private func createAccount(_ sender: Any) {
-        viewModel.createAccount(email: email.text, password: password.text, displayName: displayName.text) {
-            // 成功時のみ実行され、エラーの場合にはNotificationCenter経由で通知される
-            self.goToNext()
-        }
+        viewModel.createAccount(email: email.text, password: password.text,
+                                displayName: displayName.text)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -83,9 +81,14 @@ extension SignUpViewController {
             selector: #selector(updateValidationColor),
             name: viewModel.changeColor,
             object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(goToNext),
+            name: viewModel.createAccount,
+            object: nil)
     }
 
-    private func goToNext() {
+    @objc private func goToNext() {
         DispatchQueue.main.async {
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             secondViewController.modalPresentationStyle = .fullScreen

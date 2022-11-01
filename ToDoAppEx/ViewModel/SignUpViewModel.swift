@@ -12,6 +12,7 @@ final class SignUpViewModel {
     let changeText = Notification.Name("changeText")
     let changeColor = Notification.Name("changeColor")
     let activateButton = Notification.Name("activateButton")
+    let createAccount = Notification.Name("createAccount")
 
     private let notificationCenter: NotificationCenter
     private let model: SignUpModelProtocol
@@ -39,15 +40,14 @@ final class SignUpViewModel {
         }
     }
 
-    func createAccount(email: String?, password: String?, displayName: String?, completion:  @escaping () -> Void) {
+    func createAccount(email: String?, password: String?, displayName: String?) {
         model.createAccount(email: email, password: password, displayName: displayName) { result in
             switch result {
             case .success:
-                completion()
+                self.notificationCenter.post(name: self.createAccount, object: nil)
             case .failure(let error as SignUpModelError):
                 self.notificationCenter.post(name: self.changeText, object: error.errorText)
                 self.notificationCenter.post(name: self.changeColor, object: UIColor.red)
-                self.notificationCenter.post(name: self.activateButton, object: false)
             case .failure(_):
                 fatalError("Unexpected pattern.")
             }

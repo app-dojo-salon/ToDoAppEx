@@ -23,6 +23,26 @@ class ToDoAppExTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testSignUpModel() {
+        let model = SignUpModel()
+
+        let exp: XCTestExpectation = expectation(description: "戻ってくるまで待つ！")
+
+        model.createAccount(email: "hoge@mail", password: "hoge", displayName: "Hoge") { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(true, "新しいリスト追加に成功")
+            case .failure(let error as SignUpModelError):
+                XCTAssertTrue(false, "エラー：\(error)")
+            case .failure(_):
+                fatalError("Unexpected pattern.")
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 5)
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

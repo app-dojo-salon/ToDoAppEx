@@ -17,7 +17,7 @@ enum EditType {
 class EditViewController: UIViewController {
     private var type = EditType.create
 
-	@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var startDateTime: UIDatePicker!
     @IBOutlet weak var endDateTime: UIDatePicker!
@@ -47,7 +47,7 @@ class EditViewController: UIViewController {
     }
 
     func setEditToDoItem(index: Int, targetItem: TodoItem) {
-        textField.text = targetItem.title
+        taskNameTextField.text = targetItem.title
         categoryTextField.text = targetItem.category
         startDateTime.date = targetItem.startdate.dateFromString(format: "yyyy/MM/dd HH:mm:ss")
         endDateTime.date = targetItem.enddate.dateFromString(format: "yyyy/MM/dd HH:mm:ss")
@@ -76,13 +76,14 @@ class EditViewController: UIViewController {
         toDo.category = category
         toDo.startdate = startDateTime.date.toStringWithCurrentLocale().description
         toDo.enddate = endDateTime.date.toStringWithCurrentLocale().description
-        textField.text = ""
+        taskNameTextField.text = ""
+        categoryTextField.text = ""
 
         return toDo
     }
 
 	@IBAction func tapAddButton(_ sender: Any) {
-        guard let newTitle = textField.text, !newTitle.isEmpty else { return }
+        guard let newTitle = taskNameTextField.text, !newTitle.isEmpty else { return }
         guard let newCategory = categoryTextField.text, !newCategory.isEmpty else { return }
 
         switch type {

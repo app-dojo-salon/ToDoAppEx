@@ -67,11 +67,11 @@ final class LoginModel: LoginModelProtocol {
                 do {
                     // dataをJSONパースし、変数"getJson"に格納
                     let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                    guard let login : Bool = (json as? NSDictionary)?["login"] as? Bool else {
+                    guard let isSuccessLogin : Bool = (json as? NSDictionary)?["login"] as? Bool else {
                         completion(.failure(LoginModelError.jsonDecord))
                         return
                     }
-                    if login {
+                    if isSuccessLogin {
                         guard let docs = (json as? NSDictionary)?["docs"] as? NSArray,
                               let account_scope = (json as? NSDictionary)?["account"] as? NSDictionary else {
                             completion(.failure(LoginModelError.jsonDecord))

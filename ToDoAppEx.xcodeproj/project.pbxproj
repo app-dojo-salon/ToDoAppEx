@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		478C4E3C29444CF900088126 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C4E3B29444CF900088126 /* Info.swift */; };
 		47C91966293262930009F2F7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C91965293262930009F2F7 /* LoginModel.swift */; };
 		47C91968293304A70009F2F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C91967293304A70009F2F7 /* LoginViewModel.swift */; };
 		84342FDA46B03BB410F7DD02 /* Pods_ToDoAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8C201AAE2FAC4C3E510521 /* Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx-ToDoAppExUITests/Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		478C4E3B29444CF900088126 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		47C91965293262930009F2F7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		47C91967293304A70009F2F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9F33584828AA406F003A5263 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		479D549329738E4500CF8BD3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				478C4E3B29444CF900088126 /* Info.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		48E14F738DF37A041F75332F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,8 +191,9 @@
 		9F5F49912605826E000C2E0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F5F499226058303000C2E0A /* TodoItem.swift */,
+				479D549329738E4500CF8BD3 /* API */,
 				F44C387D26A67C8400D41ED7 /* User.swift */,
+				9F5F499226058303000C2E0A /* TodoItem.swift */,
 				9FB3A5A0290D54A200B4B849 /* SignUpModel.swift */,
 				47C91965293262930009F2F7 /* LoginModel.swift */,
 			);
@@ -575,6 +586,7 @@
 				9F9647E128756EF100B7244E /* String+Extension.swift in Sources */,
 				F4E7B07428D5BDAD008E0A92 /* SettingCell.swift in Sources */,
 				F44C387E26A67C8400D41ED7 /* User.swift in Sources */,
+				478C4E3C29444CF900088126 /* Info.swift in Sources */,
 				F48F3ADA25F3D8E8001E5342 /* HomeViewController.swift in Sources */,
 				F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */,
 				9F5F499326058303000C2E0A /* TodoItem.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class TodoItem: Object {
+class TodoItem: Object, Decodable {
     @objc dynamic var itemid = ""
     @objc dynamic var accountname = ""
     @objc dynamic var userid = ""
@@ -20,5 +20,17 @@ class TodoItem: Object {
     @objc dynamic var status = false
     override static func primaryKey() -> String? {
         return "itemid"
+    }
+
+    enum CogingKeys: String, CodingKey {
+        case itemid
+        case accountname
+        case userid
+        case title
+        case image
+        case category
+        case startdate
+        case enddate
+        case status
     }
 }

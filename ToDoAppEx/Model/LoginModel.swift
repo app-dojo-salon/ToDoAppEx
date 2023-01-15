@@ -65,20 +65,16 @@ final class LoginModel: LoginModelProtocol {
                     return
                 }
                 do {
-                    // dataをJSONパースし、変数"getJson"に格納
                     let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                    guard let isSuccessLogin : Bool = (json as? NSDictionary)?["login"] as? Bool else {
-                        completion(.failure(LoginModelError.jsonDecord))
-                        return
-                    }
-                    if isSuccessLogin {
-                        guard let docs = (json as? NSDictionary)?["docs"] as? NSArray,
-                              let account_scope = (json as? NSDictionary)?["account"] as? NSDictionary else {
+                    let info = try JSONDecoder().decode(Info.self, from: data)
+                    if info.isSuccessLogin {
+                        guard let docs = info.docs,
+                              let user = info.user else {
                             completion(.failure(LoginModelError.jsonDecord))
                             return
                         }
                         self?.userDefaults.set(true, forKey: "login")
-                        self?.writeUserInfo(account_scope: account_scope)
+                        self?.writeUserInfo(user: user)
                         self?.writeTodoItem(docs: docs)
                         completion(.success(()))
                     } else {
@@ -92,42 +88,24 @@ final class LoginModel: LoginModelProtocol {
             }
     }
 
-    private func writeUserInfo(account_scope: NSDictionary) {
-        let user = User()
-        user.userid = account_scope["_id"] as! String
-        user.accountname = account_scope["accountname"] as! String
-        user.password = account_scope["password"] as! String
-        user.email = account_scope["email"] as! String
-
+    private func writeUserInfo(user: User) {
         RealmManager.shared.writeItem(user)
     }
 
-    private func writeTodoItem(docs: NSArray) {
+    private func writeTodoItem(docs: [TodoItem]) {
         let todoItems: Results<TodoItem> = RealmManager.shared.getItemInRealm(type: TodoItem.self)
 
         for doc in docs {
-            guard let doc = doc as? NSDictionary else { return }
-            let item = TodoItem()
-            item.itemid = doc["itemid"] as! String
-            print(item.itemid)
-            item.accountname = doc["accountname"] as! String
-            item.userid = doc["userid"] as! String
-
             var existFlag = false
             for todoitem in todoItems {
-                if todoitem.itemid == item.itemid && todoitem.accountname == item.accountname {
+                if todoitem.itemid == doc.itemid && todoitem.accountname == doc.accountname {
                     existFlag = true
                     break
                 }
             }
 
             if !existFlag {
-                item.category = doc["category"] as! String
-                item.image = doc["image"] as! String
-                item.title = doc["title"] as! String
-                item.startdate = doc["startdate"] as! String
-                item.enddate = doc["enddate"] as! String
-                RealmManager.shared.writeItem(item)
+                RealmManager.shared.writeItem(doc)
             }
         }
     }

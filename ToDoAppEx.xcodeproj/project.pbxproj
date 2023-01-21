@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		478C4E3C29444CF900088126 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C4E3B29444CF900088126 /* Info.swift */; };
+		47C91966293262930009F2F7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C91965293262930009F2F7 /* LoginModel.swift */; };
+		47C91968293304A70009F2F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C91967293304A70009F2F7 /* LoginViewModel.swift */; };
 		84342FDA46B03BB410F7DD02 /* Pods_ToDoAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */; };
 		9B9012757307C49A4E96D15A /* Pods_ToDoAppEx_ToDoAppExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD0896660E6E0BD1A1F8FA7 /* Pods_ToDoAppEx_ToDoAppExUITests.framework */; };
 		9F33584928AA406F003A5263 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F33584828AA406F003A5263 /* ImageCell.xib */; };
@@ -70,6 +73,9 @@
 /* Begin PBXFileReference section */
 		09C99418B6C2D6AACD60CB37 /* Pods_ToDoAppEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8C201AAE2FAC4C3E510521 /* Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppEx-ToDoAppExUITests/Pods-ToDoAppEx-ToDoAppExUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		478C4E3B29444CF900088126 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		47C91965293262930009F2F7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		47C91967293304A70009F2F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9F33584828AA406F003A5263 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		9F5F499226058303000C2E0A /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		9F5F49BB26094FAA000C2E0A /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -151,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		479D549329738E4500CF8BD3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				478C4E3B29444CF900088126 /* Info.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		48E14F738DF37A041F75332F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,9 +191,11 @@
 		9F5F49912605826E000C2E0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F5F499226058303000C2E0A /* TodoItem.swift */,
+				479D549329738E4500CF8BD3 /* API */,
 				F44C387D26A67C8400D41ED7 /* User.swift */,
+				9F5F499226058303000C2E0A /* TodoItem.swift */,
 				9FB3A5A0290D54A200B4B849 /* SignUpModel.swift */,
+				47C91965293262930009F2F7 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB3A5A3290E1A7C00B4B849 /* SignUpViewModel.swift */,
+				47C91967293304A70009F2F7 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -557,6 +574,7 @@
 				9F5F49BC26094FAA000C2E0A /* ImageCell.swift in Sources */,
 				9FB3A5A4290E1A7C00B4B849 /* SignUpViewModel.swift in Sources */,
 				F4F008F527C571D500B44B80 /* AskPasswordSettingViewController.swift in Sources */,
+				47C91968293304A70009F2F7 /* LoginViewModel.swift in Sources */,
 				9FA692BB285B48300066850F /* RealmManager.swift in Sources */,
 				F4E7B07F28D8130E008E0A92 /* SettingLabelCell.swift in Sources */,
 				F48F3B0E25F447B6001E5342 /* SettingViewController.swift in Sources */,
@@ -568,10 +586,12 @@
 				9F9647E128756EF100B7244E /* String+Extension.swift in Sources */,
 				F4E7B07428D5BDAD008E0A92 /* SettingCell.swift in Sources */,
 				F44C387E26A67C8400D41ED7 /* User.swift in Sources */,
+				478C4E3C29444CF900088126 /* Info.swift in Sources */,
 				F48F3ADA25F3D8E8001E5342 /* HomeViewController.swift in Sources */,
 				F48F3AD625F3D8E8001E5342 /* AppDelegate.swift in Sources */,
 				9F5F499326058303000C2E0A /* TodoItem.swift in Sources */,
 				9F6384C126460B93001DFEBD /* CustomView.swift in Sources */,
+				47C91966293262930009F2F7 /* LoginModel.swift in Sources */,
 				F492B7A5263BC62800E2F11D /* TabBarController.swift in Sources */,
 				F421746426AB9B5000B133F1 /* ServerRequest.swift in Sources */,
 				F47286042622C4EA002D6F86 /* LoginViewController.swift in Sources */,
@@ -754,8 +774,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A98KZDWY2P;
 				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = A98KZDWY2P;
 				INFOPLIST_FILE = ToDoAppEx/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "do22 - To Do List";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
@@ -781,8 +801,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A98KZDWY2P;
 				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = A98KZDWY2P;
 				INFOPLIST_FILE = ToDoAppEx/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "do22 - To Do List";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
